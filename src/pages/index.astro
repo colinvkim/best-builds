@@ -1,0 +1,593 @@
+---
+import { Font } from "astro:assets";
+import BrawlerCard from "../components/BrawlerCard.astro";
+import rawBrawlers from "../data/brawlers.json";
+import { normalizeBrawlers, RARITY_ORDER, RARITY_STYLES } from "../lib/brawlers";
+
+const brawlers = normalizeBrawlers(rawBrawlers).sort((left, right) => {
+  if (left.rarityRank !== right.rarityRank) {
+    return left.rarityRank - right.rarityRank;
+  }
+
+  return left.brawlerName.localeCompare(right.brawlerName);
+});
+
+const rarityCount = new Map<string, number>();
+
+for (const brawler of brawlers) {
+  rarityCount.set(brawler.rarity, (rarityCount.get(brawler.rarity) ?? 0) + 1);
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Best Builds for Every Brawler</title>
+    <meta
+      name="description"
+      content="Fast, searchable Brawl Stars best builds powered by a local JSON file and Brawlify CDN icons."
+    />
+    <link rel="preconnect" href="https://cdn.brawlify.com" crossorigin />
+    <Font cssVariable="--font-inter" />
+    <style is:global>
+      :root {
+        color-scheme: light;
+        --page-bg: #f3f5f8;
+        --page-panel: #ffffff;
+        --page-border: #d7dde5;
+        --page-border-strong: #b8c2cf;
+        --page-text: #111827;
+        --page-text-muted: #5f6b7a;
+        --page-shadow: 0 14px 40px rgba(17, 24, 39, 0.08);
+        --radius-lg: 24px;
+        --radius-md: 16px;
+        --radius-sm: 12px;
+        --content-max: 1180px;
+        font-family: var(--font-inter), system-ui, Arial, Helvetica, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: var(--page-bg);
+      }
+
+      body {
+        margin: 0;
+        color: var(--page-text);
+        background:
+          linear-gradient(180deg, #ffffff 0, #f3f5f8 240px),
+          var(--page-bg);
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page-shell {
+        width: min(calc(100% - 32px), var(--content-max));
+        margin: 0 auto;
+        padding: 32px 0 56px;
+      }
+
+      .hero {
+        display: grid;
+        gap: 20px;
+        padding: 28px;
+        border: 1px solid var(--page-border);
+        border-radius: calc(var(--radius-lg) + 4px);
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.88)),
+          repeating-linear-gradient(
+            135deg,
+            rgba(17, 24, 39, 0.03),
+            rgba(17, 24, 39, 0.03) 12px,
+            transparent 12px,
+            transparent 24px
+          );
+        box-shadow: var(--page-shadow);
+      }
+
+      .hero-copy {
+        display: grid;
+        gap: 10px;
+        max-width: 780px;
+      }
+
+      .hero-kicker {
+        margin: 0;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--page-text-muted);
+      }
+
+      .hero h1 {
+        margin: 0;
+        font-size: clamp(2.2rem, 4vw, 4rem);
+        line-height: 0.95;
+        letter-spacing: -0.04em;
+      }
+
+      .hero p {
+        margin: 0;
+        max-width: 62ch;
+        color: var(--page-text-muted);
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      .hero-note {
+        padding: 14px 16px;
+        border: 1px solid var(--page-border);
+        border-radius: var(--radius-md);
+        background: rgba(255, 255, 255, 0.82);
+        color: var(--page-text-muted);
+      }
+
+      .hero-note strong {
+        color: var(--page-text);
+      }
+
+      .toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: grid;
+        gap: 14px;
+        margin-top: 20px;
+        padding: 18px;
+        border: 1px solid rgba(184, 194, 207, 0.92);
+        border-radius: var(--radius-lg);
+        background: rgba(243, 245, 248, 0.94);
+        backdrop-filter: blur(10px);
+      }
+
+      .controls {
+        display: grid;
+        gap: 12px;
+      }
+
+      .field {
+        display: grid;
+        gap: 8px;
+      }
+
+      .field label {
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--page-text-muted);
+      }
+
+      .field input,
+      .field select {
+        width: 100%;
+        min-height: 48px;
+        border: 1px solid var(--page-border-strong);
+        border-radius: var(--radius-sm);
+        background: #fff;
+        color: var(--page-text);
+        font: inherit;
+        padding: 0 14px;
+      }
+
+      .meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .results-count {
+        margin: 0;
+        font-weight: 700;
+      }
+
+      .rarity-legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .rarity-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 10px;
+        border: 1px solid var(--page-border);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.85);
+        font-size: 0.86rem;
+      }
+
+      .rarity-chip i {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--chip-color);
+        flex: none;
+      }
+
+      .cards {
+        display: grid;
+        gap: 18px;
+        margin-top: 20px;
+      }
+
+      .empty-state {
+        display: none;
+        padding: 28px;
+        border: 1px dashed var(--page-border-strong);
+        border-radius: var(--radius-lg);
+        background: rgba(255, 255, 255, 0.65);
+        text-align: center;
+        color: var(--page-text-muted);
+      }
+
+      .empty-state[data-visible="true"] {
+        display: block;
+      }
+
+      .brawler-grid {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+
+      .brawler-card {
+        display: grid;
+        gap: 18px;
+        padding: 20px;
+        border: 1px solid var(--page-border);
+        border-radius: var(--radius-lg);
+        background: var(--page-panel);
+        box-shadow: 0 8px 22px rgba(17, 24, 39, 0.05);
+        content-visibility: auto;
+        contain-intrinsic-size: 295px;
+      }
+
+      .card-header {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 14px;
+        align-items: center;
+      }
+
+      .brawler-icon {
+        width: 84px;
+        height: 84px;
+        object-fit: contain;
+      }
+
+      .title-wrap {
+        display: grid;
+        gap: 6px;
+      }
+
+      .eyebrow {
+        margin: 0;
+        color: var(--page-text-muted);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .title-wrap h2 {
+        margin: 0;
+        font-size: 1.35rem;
+        line-height: 1;
+        letter-spacing: -0.03em;
+      }
+
+      .rarity-pill {
+        display: inline-flex;
+        width: fit-content;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: var(--rarity-bg);
+        color: var(--rarity-text);
+        font-size: 0.82rem;
+        font-weight: 700;
+      }
+
+      .build-list {
+        display: grid;
+        gap: 14px;
+        margin: 0;
+      }
+
+      .build-row {
+        display: grid;
+        grid-template-columns: 84px 1fr;
+        gap: 12px;
+        align-items: center;
+        padding-top: 14px;
+        border-top: 1px solid #edf1f5;
+      }
+
+      .build-row dt {
+        color: var(--page-text-muted);
+        font-size: 0.88rem;
+        font-weight: 700;
+      }
+
+      .build-row dd {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 0;
+        min-width: 0;
+      }
+
+      .build-row dd > span:last-child {
+        font-weight: 700;
+        line-height: 1.3;
+      }
+
+      .gear-list {
+        flex-wrap: wrap;
+      }
+
+      .gear-chip {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        background: #f5f7fa;
+        border: 1px solid #e3e9f0;
+        cursor: help;
+      }
+
+      .gear-chip img {
+        width: 30px;
+        height: 30px;
+      }
+
+      .gear-chip:focus-visible {
+        outline: 2px solid #111827;
+        outline-offset: 2px;
+      }
+
+      .gear-tooltip {
+        position: absolute;
+        left: 50%;
+        bottom: calc(100% + 10px);
+        transform: translateX(-50%);
+        padding: 7px 10px;
+        border-radius: 10px;
+        background: #111827;
+        color: #ffffff;
+        font-size: 0.78rem;
+        font-weight: 700;
+        line-height: 1;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+      }
+
+      .gear-chip:hover .gear-tooltip,
+      .gear-chip:focus-visible .gear-tooltip {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      @media (min-width: 760px) {
+        .controls {
+          grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(180px, 0.7fr));
+        }
+
+        .hero {
+          grid-template-columns: 1.5fr 0.9fr;
+          align-items: end;
+        }
+      }
+
+      @media (max-width: 759px) {
+        .page-shell {
+          width: min(calc(100% - 24px), var(--content-max));
+          padding-top: 20px;
+        }
+
+        .hero,
+        .toolbar,
+        .brawler-card {
+          border-radius: 20px;
+        }
+
+        .build-row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="page-shell">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="hero-kicker">Brawl Stars Build Index</p>
+          <h1 id="page-title">Best setup for every brawler, sorted for speed.</h1>
+          <p>
+            This is a static-first Astro site that reads from one JSON file. The UI stays simple on
+            purpose: fast search, predictable sorting, no animation, and image-heavy cards built for
+            quick scanning.
+          </p>
+        </div>
+
+        <p class="hero-note">
+          <strong>Better editing workflow:</strong> the sample JSON uses full Brawlify CDN URLs, but
+          the site also accepts raw Brawlify asset IDs in any icon field if you want shorter manual
+          entries.
+        </p>
+      </section>
+
+      <section class="toolbar" aria-label="Search and sorting controls">
+        <div class="controls">
+          <div class="field">
+            <label for="search">Search brawler</label>
+            <input id="search" type="search" placeholder="Shelly, Piper, Mortis..." autocomplete="off" />
+          </div>
+
+          <div class="field">
+            <label for="rarity-filter">Rarity</label>
+            <select id="rarity-filter">
+              <option value="all">All rarities</option>
+              {
+                RARITY_ORDER.map((rarity) => (
+                  <option value={rarity}>
+                    {rarity}
+                    {rarityCount.has(rarity) ? ` (${rarityCount.get(rarity)})` : ""}
+                  </option>
+                ))
+              }
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="sort-order">Sort by</label>
+            <select id="sort-order">
+              <option value="rarity">Rarity</option>
+              <option value="name-asc">Name A-Z</option>
+              <option value="name-desc">Name Z-A</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="meta-row">
+          <p class="results-count" data-results-count>
+            Showing {brawlers.length} of {brawlers.length} brawlers
+          </p>
+
+          <div class="rarity-legend" aria-label="Rarity legend">
+            {
+              RARITY_ORDER.map((rarity) => (
+                <span class="rarity-chip" style={`--chip-color:${RARITY_STYLES[rarity].color};`}>
+                  <i aria-hidden="true"></i>
+                  {rarity}
+                </span>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <section class="cards" aria-labelledby="brawler-list-title">
+        <h2 id="brawler-list-title" class="sr-only" style="position:absolute;left:-9999px;">
+          Brawler build list
+        </h2>
+
+        <div class="empty-state" data-empty-state data-visible="false">
+          No brawlers matched that search. Try a different name or rarity.
+        </div>
+
+        <div class="brawler-grid" data-grid>
+          {brawlers.map((brawler) => <BrawlerCard brawler={brawler} />)}
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const searchInput = document.querySelector("#search");
+      const raritySelect = document.querySelector("#rarity-filter");
+      const sortSelect = document.querySelector("#sort-order");
+      const grid = document.querySelector("[data-grid]");
+      const count = document.querySelector("[data-results-count]");
+      const emptyState = document.querySelector("[data-empty-state]");
+
+      if (
+        searchInput instanceof HTMLInputElement &&
+        raritySelect instanceof HTMLSelectElement &&
+        sortSelect instanceof HTMLSelectElement &&
+        grid instanceof HTMLElement &&
+        count instanceof HTMLElement &&
+        emptyState instanceof HTMLElement
+      ) {
+        const cards = Array.from(grid.querySelectorAll("[data-card]")).filter(
+          (card) => card instanceof HTMLElement
+        );
+        const total = cards.length;
+
+        const sortCards = () => {
+          const sortMode = sortSelect.value;
+          const sorted = [...cards].sort((left, right) => {
+            const leftName = left.getAttribute("data-name") ?? "";
+            const rightName = right.getAttribute("data-name") ?? "";
+
+            if (sortMode === "name-asc") {
+              return leftName.localeCompare(rightName);
+            }
+
+            if (sortMode === "name-desc") {
+              return rightName.localeCompare(leftName);
+            }
+
+            const leftRank = Number(left.getAttribute("data-rarity-rank") ?? "0");
+            const rightRank = Number(right.getAttribute("data-rarity-rank") ?? "0");
+
+            if (leftRank !== rightRank) {
+              return leftRank - rightRank;
+            }
+
+            return leftName.localeCompare(rightName);
+          });
+
+          for (const card of sorted) {
+            grid.append(card);
+          }
+        };
+
+        const filterCards = () => {
+          const query = searchInput.value.trim().toLowerCase();
+          const selectedRarity = raritySelect.value;
+          let visible = 0;
+
+          for (const card of cards) {
+            const name = card.getAttribute("data-name") ?? "";
+            const rarity = card.getAttribute("data-rarity") ?? "";
+            const matchesQuery = query.length === 0 || name.includes(query);
+            const matchesRarity = selectedRarity === "all" || rarity === selectedRarity;
+            const isVisible = matchesQuery && matchesRarity;
+
+            card.hidden = !isVisible;
+
+            if (isVisible) {
+              visible += 1;
+            }
+          }
+
+          count.textContent = `Showing ${visible} of ${total} brawlers`;
+          emptyState.dataset.visible = visible === 0 ? "true" : "false";
+        };
+
+        const syncView = () => {
+          sortCards();
+          filterCards();
+        };
+
+        searchInput.addEventListener("input", filterCards);
+        raritySelect.addEventListener("change", filterCards);
+        sortSelect.addEventListener("change", syncView);
+
+        syncView();
+      }
+    </script>
+  </body>
+</html>

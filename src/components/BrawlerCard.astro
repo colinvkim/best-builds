@@ -1,0 +1,96 @@
+---
+import { Image } from "astro:assets";
+import { RARITY_STYLES, type Brawler } from "../lib/brawlers";
+
+type Props = {
+  brawler: Brawler;
+};
+
+const { brawler } = Astro.props;
+const rarityStyle = RARITY_STYLES[brawler.rarity];
+---
+
+<article
+  class="brawler-card"
+  data-card
+  data-name={brawler.brawlerName.toLowerCase()}
+  data-rarity={brawler.rarity}
+  data-rarity-rank={String(brawler.rarityRank)}
+>
+  <header class="card-header">
+    <img
+      class="brawler-icon"
+      src={brawler.brawlerIconUrl}
+      alt={`${brawler.brawlerName} icon`}
+      width="96"
+      height="96"
+      loading="lazy"
+      decoding="async"
+      fetchpriority="low"
+    />
+
+    <div class="title-wrap">
+      <p class="eyebrow">Best Build</p>
+      <h2>{brawler.brawlerName}</h2>
+      <span
+        class="rarity-pill"
+        style={`--rarity-bg:${rarityStyle.color}; --rarity-text:${rarityStyle.textColor};`}
+      >
+        {brawler.rarity}
+      </span>
+    </div>
+  </header>
+
+  <dl class="build-list">
+    <div class="build-row">
+      <dt>Gadget</dt>
+      <dd>
+        <img
+          src={brawler.bestGadgetIconUrl}
+          alt={`${brawler.bestGadgetName} icon`}
+          width="48"
+          height="48"
+          loading="lazy"
+          decoding="async"
+          fetchpriority="low"
+        />
+        <span>{brawler.bestGadgetName}</span>
+      </dd>
+    </div>
+
+    <div class="build-row">
+      <dt>Star Power</dt>
+      <dd>
+        <img
+          src={brawler.bestStarPowerIconUrl}
+          alt={`${brawler.bestStarPowerName} icon`}
+          width="48"
+          height="48"
+          loading="lazy"
+          decoding="async"
+          fetchpriority="low"
+        />
+        <span>{brawler.bestStarPowerName}</span>
+      </dd>
+    </div>
+
+    <div class="build-row">
+      <dt>Gears</dt>
+      <dd class="gear-list">
+        {
+          brawler.best2Gears.map((gear, index) => (
+            <span class="gear-chip" tabindex="0" aria-label={gear}>
+              <Image
+                src={brawler.best2GearsImage[index]}
+                alt={`${gear} gear icon`}
+                layout="constrained"
+                loading="lazy"
+              />
+              <span class="gear-tooltip" aria-hidden="true">{gear}</span>
+            </span>
+          ))
+        }
+      </dd>
+    </div>
+  </dl>
+</article>

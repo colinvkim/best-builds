@@ -1,0 +1,57 @@
+[
+  {
+    "brawlerName": "Shelly",
+    "bestGadgetName": "Fast Forward",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000255.png",
+    "bestStarPowerName": "Shell Shock",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000076.png",
+    "best2Gears": ["Damage", "Shield"],
+    "best2GearsIcon": ["damage", "shield"],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000000.png",
+    "rarity": "Starting Brawler"
+  },
+  {
+    "brawlerName": "Bull",
+    "bestGadgetName": "Stomper",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000272.png",
+    "bestStarPowerName": "Tough Guy",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000078.png",
+    "best2Gears": ["Damage", "Shield"],
+    "best2GearsIcon": ["damage", "shield"],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000002.png",
+    "rarity": "Rare"
+  },
+  {
+    "brawlerName": "Jessie",
+    "bestGadgetName": "Spark Plug",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000251.png",
+    "bestStarPowerName": "Energize",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000083.png",
+    "best2Gears": ["Damage", "Shield"],
+    "best2GearsIcon": ["damage", "shield"],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000007.png",
+    "rarity": "Super Rare"
+  },
+  {
+    "brawlerName": "Piper",
+    "bestGadgetName": "Auto Aimer",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000268.png",
+    "bestStarPowerName": "Ambush",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000091.png",
+    "best2Gears": ["Damage", "Shield"],
+    "best2GearsIcon": ["damage", "shield"],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000005.png",
+    "rarity": "Epic"
+  },
+  {
+    "brawlerName": "Mortis",
+    "bestGadgetName": "Combo Spinner",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000265.png",
+    "bestStarPowerName": "Creepy Harvest",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000087.png",
+    "best2Gears": ["Damage", "Shield"],
+    "best2GearsIcon": ["damage", "shield"],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000011.png",
+    "rarity": "Mythic"
+  }
+]

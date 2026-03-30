@@ -1,0 +1,35 @@
+[
+  {
+    "brawlerName": "Shelly",
+    "bestGadgetName": "Fast Forward",
+    "bestGadgetIcon": "23000255",
+    "bestStarPowerName": "Shell Shock",
+    "bestStarPowerIcon": "23000076",
+    "best2Gears": ["Damage", "Shield"],
+    "best2GearsIcon": ["damage", "shield"],
+    "brawlerIcon": "16000000",
+    "rarity": "Starting Brawler"
+  },
+  {
+    "brawlerName": "Bull",
+    "bestGadgetName": "Stomper",
+    "bestGadgetIcon": "23000272",
+    "bestStarPowerName": "Tough Guy",
+    "bestStarPowerIcon": "23000078",
+    "best2Gears": ["Damage", "Shield"],
+    "best2GearsIcon": ["damage", "shield"],
+    "brawlerIcon": "16000002",
+    "rarity": "Rare"
+  },
+  {
+    "brawlerName": "Jessie",
+    "bestGadgetName": "Spark Plug",
+    "bestGadgetIcon": "23000251",
+    "bestStarPowerName": "Energize",
+    "bestStarPowerIcon": "23000083",
+    "best2Gears": ["Damage", "Shield"],
+    "best2GearsIcon": ["damage", "shield"],
+    "brawlerIcon": "16000007",
+    "rarity": "Super Rare"
+  }
+]
