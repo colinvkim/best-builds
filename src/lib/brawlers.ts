@@ -61,13 +61,13 @@ const gearImages = new Map<string, ImageMetadata>(
 );
 
 export const RARITY_STYLES: Record<Rarity, { color: string; textColor: string }> = {
-  "Starting Brawler": { color: "#b9eaff", textColor: "#0c3950" },
-  Rare: { color: "#68fd58", textColor: "#123d0a" },
-  "Super Rare": { color: "#5ab3ff", textColor: "#0b315f" },
-  Epic: { color: "#d850ff", textColor: "#410e4d" },
-  Mythic: { color: "#fe5e72", textColor: "#551019" },
-  Legendary: { color: "#fff11e", textColor: "#433d00" },
-  "Ultra Legendary": { color: "#f88f25", textColor: "#4f2300" }
+  "Starting Brawler": { color: "#f0f9ff", textColor: "#0369a1" },
+  Rare: { color: "#f0fdf4", textColor: "#15803d" },
+  "Super Rare": { color: "#eff6ff", textColor: "#1d4ed8" },
+  Epic: { color: "#f5f3ff", textColor: "#6d28d9" },
+  Mythic: { color: "#fff1f2", textColor: "#be123c" },
+  Legendary: { color: "#fffbeb", textColor: "#b45309" },
+  "Ultra Legendary": { color: "#fff7ed", textColor: "#c2410c" }
 };
 
 const isNonEmptyString = (value: unknown): value is string =>

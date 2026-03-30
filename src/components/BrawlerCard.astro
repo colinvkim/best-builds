@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { RARITY_STYLES, type Brawler } from "../lib/brawlers";
+import { Badge } from "@/components/ui/badge"
 
 type Props = {
   brawler: Brawler;
@@ -32,9 +33,10 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
     <div class="title-wrap">
       <p class="eyebrow">Best Build</p>
       <h2 class="card-title">{brawler.brawlerName}</h2>
-      <span class="rarity-pill" style={`--rarity-bg:${rarityStyle.color}; --rarity-text:${rarityStyle.textColor};`}>
-        {brawler.rarity}
       </span>
+      <Badge style={{ backgroundColor: rarityStyle.color, color: rarityStyle.textColor }}>
+        {brawler.rarity}
+      </Badge>
     </div>
   </header>
 
