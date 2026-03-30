@@ -11,15 +11,15 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
 ---
 
 <article
-  class="brawler-card"
+  class="grid gap-[18px] rounded-[24px] border border-slate-200 bg-white p-5 shadow-[0_8px_22px_rgba(17,24,39,0.05)] [contain-intrinsic-size:295px] [content-visibility:auto] max-md:rounded-[20px]"
   data-card
   data-name={brawler.brawlerName.toLowerCase()}
   data-rarity={brawler.rarity}
   data-rarity-rank={String(brawler.rarityRank)}
 >
-  <header class="card-header">
+  <header class="grid items-center gap-[14px] [grid-template-columns:auto_1fr]">
     <img
-      class="brawler-icon"
+      class="h-[84px] w-[84px] object-contain"
       src={brawler.brawlerIconUrl}
       alt={`${brawler.brawlerName} icon`}
       width="96"
@@ -29,11 +29,15 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
       fetchpriority="low"
     />
 
-    <div class="title-wrap">
-      <p class="eyebrow">Best Build</p>
-      <h2>{brawler.brawlerName}</h2>
+    <div class="grid gap-1.5">
+      <p class="m-0 text-[0.78rem] font-bold uppercase tracking-[0.08em] text-slate-500">
+        Best Build
+      </p>
+      <h2 class="m-0 text-[1.35rem] leading-none font-black tracking-[-0.03em]">
+        {brawler.brawlerName}
+      </h2>
       <span
-        class="rarity-pill"
+        class="inline-flex w-fit rounded-full bg-[var(--rarity-bg)] px-2.5 py-1 text-[0.82rem] font-bold text-[var(--rarity-text)]"
         style={`--rarity-bg:${rarityStyle.color}; --rarity-text:${rarityStyle.textColor};`}
       >
         {brawler.rarity}
@@ -41,10 +45,10 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
     </div>
   </header>
 
-  <dl class="build-list">
-    <div class="build-row">
-      <dt>Gadget</dt>
-      <dd>
+  <dl class="m-0 grid gap-[14px]">
+    <div class="grid items-center gap-3 border-t border-slate-100 pt-[14px] md:[grid-template-columns:84px_1fr]">
+      <dt class="text-[0.88rem] font-bold text-slate-500">Gadget</dt>
+      <dd class="m-0 flex min-w-0 items-center gap-3">
         <img
           src={brawler.bestGadgetIconUrl}
           alt={`${brawler.bestGadgetName} icon`}
@@ -54,13 +58,13 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
           decoding="async"
           fetchpriority="low"
         />
-        <span>{brawler.bestGadgetName}</span>
+        <span class="font-bold leading-[1.3]">{brawler.bestGadgetName}</span>
       </dd>
     </div>
 
-    <div class="build-row">
-      <dt>Star Power</dt>
-      <dd>
+    <div class="grid items-center gap-3 border-t border-slate-100 pt-[14px] md:[grid-template-columns:84px_1fr]">
+      <dt class="text-[0.88rem] font-bold text-slate-500">Star Power</dt>
+      <dd class="m-0 flex min-w-0 items-center gap-3">
         <img
           src={brawler.bestStarPowerIconUrl}
           alt={`${brawler.bestStarPowerName} icon`}
@@ -70,23 +74,33 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
           decoding="async"
           fetchpriority="low"
         />
-        <span>{brawler.bestStarPowerName}</span>
+        <span class="font-bold leading-[1.3]">{brawler.bestStarPowerName}</span>
       </dd>
     </div>
 
-    <div class="build-row">
-      <dt>Gears</dt>
-      <dd class="gear-list">
+    <div class="grid items-center gap-3 border-t border-slate-100 pt-[14px] md:[grid-template-columns:84px_1fr]">
+      <dt class="text-[0.88rem] font-bold text-slate-500">Gears</dt>
+      <dd class="m-0 flex min-w-0 flex-wrap items-center gap-3">
         {
           brawler.best2Gears.map((gear, index) => (
-            <span class="gear-chip" tabindex="0" aria-label={gear}>
+            <span
+              class="group relative inline-flex h-[46px] w-[46px] items-center justify-center rounded-[14px] border border-slate-200 bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2"
+              tabindex="0"
+              aria-label={gear}
+            >
               <Image
+                class="h-[30px] w-[30px]"
                 src={brawler.best2GearsImage[index]}
                 alt={`${gear} gear icon`}
                 layout="constrained"
                 loading="lazy"
               />
-              <span class="gear-tooltip" aria-hidden="true">{gear}</span>
+              <span
+                class="pointer-events-none invisible absolute left-1/2 bottom-[calc(100%+10px)] -translate-x-1/2 whitespace-nowrap rounded-[10px] bg-slate-900 px-2.5 py-[7px] text-[0.78rem] leading-none font-bold text-white opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-visible:visible group-focus-visible:opacity-100"
+                aria-hidden="true"
+              >
+                {gear}
+              </span>
             </span>
           ))
         }
