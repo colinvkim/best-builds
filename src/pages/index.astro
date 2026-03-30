@@ -34,59 +34,42 @@ for (const brawler of brawlers) {
     <Font cssVariable="--font-inter" />
   </head>
 
-  <body class="m-0 bg-[linear-gradient(180deg,#ffffff_0,#f3f5f8_240px)] font-sans text-slate-900 antialiased">
-    <main class="mx-auto w-[min(calc(100%-32px),1180px)] py-8 pb-14 max-md:w-[min(calc(100%-24px),1180px)] max-md:pt-5">
-      <section
-        class="relative grid gap-5 overflow-hidden rounded-[28px] border border-slate-200 bg-white/90 p-7 shadow-[0_14px_40px_rgba(17,24,39,0.08)] before:absolute before:inset-0 before:bg-[linear-gradient(rgba(15,23,42,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.04)_1px,transparent_1px)] before:bg-size-[24px_24px] before:opacity-50 before:content-[''] after:absolute after:inset-0 after:bg-[radial-gradient(circle_at_top_left,rgba(125,211,252,0.35),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(251,191,36,0.28),transparent_30%)] after:content-[''] md:grid-cols-[1.5fr_0.9fr] md:items-end max-md:rounded-[20px]"
-        aria-labelledby="page-title"
-      >
-        <div class="relative z-10 grid max-w-195 gap-2.5">
-          <p class="m-0 text-[0.8rem] font-bold uppercase tracking-[0.16em] text-slate-500">
-            Brawl Stars Build Index
-          </p>
-          <h1 id="page-title" class="m-0 text-[clamp(2.2rem,4vw,4rem)] leading-[0.95] font-black tracking-[-0.04em]">
-            Best setup for every brawler, sorted for speed.
-          </h1>
-          <p class="m-0 max-w-[62ch] text-base leading-7 text-slate-600">
+  <body>
+    <main class="page-shell">
+      <section class="hero-panel" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="hero-kicker">Brawl Stars Build Index</p>
+          <h1 id="page-title" class="hero-title">Best setup for every brawler, sorted for speed.</h1>
+          <p class="hero-copy-text">
             This is a static-first Astro site that reads from one JSON file. The UI stays simple on
             purpose: fast search, predictable sorting, no animation, and image-heavy cards built for
             quick scanning.
           </p>
         </div>
 
-        <p class="relative z-10 rounded-2xl border border-slate-200 bg-white/80 px-4 py-3.5 text-slate-600 backdrop-blur">
+        <p class="hero-note">
           <strong class="text-slate-900">Better editing workflow:</strong> the sample JSON uses full
           Brawlify CDN URLs, but the site also accepts raw Brawlify asset IDs in any icon field if
           you want shorter manual entries.
         </p>
       </section>
 
-      <section
-        class="sticky top-0 z-10 mt-5 grid gap-3.5 rourounded-3xlrder border-slate-300/90 bg-slate-100/90 p-4.5 backdrop-blur max-md:rounded-[20px]"
-        aria-label="Search and sorting controls"
-      >
-        <div class="grid gap-3 md:grid-cols-[minmax(0,1.5fr)_repeat(2,minmax(180px,0.7fr))]">
-          <div class="grid gap-2">
-            <label for="search" class="text-[0.82rem] font-bold uppercase tracking-[0.06em] text-slate-500">
-              Search brawler
-            </label>
+      <section class="toolbar" aria-label="Search and sorting controls">
+        <div class="toolbar-controls">
+          <div class="field">
+            <label for="search" class="field-label">Search brawler</label>
             <input
               id="search"
-              class="min-h-12 w-full rounded-xl border border-slate-300 bg-white px-3.5 text-slate-900 outline-none ring-0 transition placeholder:text-slate-400 focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10"
+              class="field-control"
               type="search"
               placeholder="Shelly, Piper, Mortis..."
               autocomplete="off"
             />
           </div>
 
-          <div class="grid gap-2">
-            <label for="rarity-filter" class="text-[0.82rem] font-bold uppercase tracking-[0.06em] text-slate-500">
-              Rarity
-            </label>
-            <select
-              id="rarity-filter"
-              class="min-h-12 w-full rounded-xl border border-slate-300 bg-white px-3.5 text-slate-900 outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10"
-            >
+          <div class="field">
+            <label for="rarity-filter" class="field-label">Rarity</label>
+            <select id="rarity-filter" class="field-control">
               <option value="all">All rarities</option>
               {
                 RARITY_ORDER.map((rarity) => (
@@ -99,14 +82,9 @@ for (const brawler of brawlers) {
             </select>
           </div>
 
-          <div class="grid gap-2">
-            <label for="sort-order" class="text-[0.82rem] font-bold uppercase tracking-[0.06em] text-slate-500">
-              Sort by
-            </label>
-            <select
-              id="sort-order"
-              class="min-h-12 w-full rounded-xl border border-slate-300 bg-white px-3.5 text-slate-900 outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10"
-            >
+          <div class="field">
+            <label for="sort-order" class="field-label">Sort by</label>
+            <select id="sort-order" class="field-control">
               <option value="rarity">Rarity</option>
               <option value="name-asc">Name A-Z</option>
               <option value="name-desc">Name Z-A</option>
@@ -114,22 +92,16 @@ for (const brawler of brawlers) {
           </div>
         </div>
 
-        <div class="flex flex-wrap items-center justify-between gap-3">
-          <p class="m-0 font-bold" data-results-count>
+        <div class="toolbar-meta">
+          <p class="results-count" data-results-count>
             Showing {brawlers.length} of {brawlers.length} brawlers
           </p>
 
-          <div class="flex flex-wrap gap-2.5" aria-label="Rarity legend">
+          <div class="rarity-legend" aria-label="Rarity legend">
             {
               RARITY_ORDER.map((rarity) => (
-                <span
-                  class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/85 px-2.5 py-2 text-[0.86rem]"
-                  style={`--chip-color:${RARITY_STYLES[rarity].color};`}
-                >
-                  <i
-                    class="h-2.5 w-2.5 rounded-full bg-(--chip-color) not-italic"
-                    aria-hidden="true"
-                  ></i>
+                <span class="rarity-chip" style={`--chip-color:${RARITY_STYLES[rarity].color};`}>
+                  <i class="rarity-dot" aria-hidden="true"></i>
                   {rarity}
                 </span>
               ))
@@ -138,20 +110,16 @@ for (const brawler of brawlers) {
         </div>
       </section>
 
-      <section class="mt-5 grid gap-4.5" aria-labelledby="brawler-list-title">
+      <section class="cards-section" aria-labelledby="brawler-list-title">
         <h2 id="brawler-list-title" class="sr-only">
           Brawler build list
         </h2>
 
-        <div
-          class="rounded-3xl border border-dashed border-slate-300 bg-white/65 px-7 py-7 text-center text-slate-500"
-          data-empty-state
-          hidden
-        >
+        <div class="empty-state" data-empty-state hidden>
           No brawlers matched that search. Try a different name or rarity.
         </div>
 
-        <div class="grid gap-4.5 grid-cols-[repeat(auto-fit,minmax(280px,1fr))]" data-grid>
+        <div class="brawler-grid" data-grid>
           {brawlers.map((brawler) => <BrawlerCard brawler={brawler} />)}
         </div>
       </section>
