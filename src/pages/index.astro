@@ -1,6 +1,11 @@
 ---
 import "../styles/global.css";
 import { Font } from "astro:assets";
+import {
+  NativeSelect,
+  NativeSelectOptGroup,
+  NativeSelectOption,
+} from "@/components/ui/native-select"
 import BrawlerCard from "../components/BrawlerCard.astro";
 import rawBrawlers from "../data/brawlers.json";
 import { normalizeBrawlers, RARITY_ORDER, RARITY_STYLES } from "../lib/brawlers";
@@ -41,17 +46,11 @@ for (const brawler of brawlers) {
           <p class="hero-kicker">Brawl Stars Build Index</p>
           <h1 id="page-title" class="hero-title">Best setup for every brawler, sorted for speed.</h1>
           <p class="hero-copy-text">
-            This is a static-first Astro site that reads from one JSON file. The UI stays simple on
+            Quickly discover the best builds of brawlers. The UI stays simple on
             purpose: fast search, predictable sorting, no animation, and image-heavy cards built for
             quick scanning.
           </p>
         </div>
-
-        <p class="hero-note">
-          <strong class="text-slate-900">Better editing workflow:</strong> the sample JSON uses full
-          Brawlify CDN URLs, but the site also accepts raw Brawlify asset IDs in any icon field if
-          you want shorter manual entries.
-        </p>
       </section>
 
       <section class="toolbar" aria-label="Search and sorting controls">
@@ -69,26 +68,26 @@ for (const brawler of brawlers) {
 
           <div class="field">
             <label for="rarity-filter" class="field-label">Rarity</label>
-            <select id="rarity-filter" class="field-control">
-              <option value="all">All rarities</option>
+            <NativeSelect id="rarity-filter">
+              <NativeSelectOption value="all">All rarities</option>
               {
                 RARITY_ORDER.map((rarity) => (
-                  <option value={rarity}>
+                  <NativeSelectOption value={rarity}>
                     {rarity}
                     {rarityCount.has(rarity) ? ` (${rarityCount.get(rarity)})` : ""}
-                  </option>
+                  </NativeSelectOption>
                 ))
               }
-            </select>
+            </NativeSelect>
           </div>
 
           <div class="field">
             <label for="sort-order" class="field-label">Sort by</label>
-            <select id="sort-order" class="field-control">
-              <option value="rarity">Rarity</option>
-              <option value="name-asc">Name A-Z</option>
-              <option value="name-desc">Name Z-A</option>
-            </select>
+            <NativeSelect id="sort-order">
+              <NativeSelectOption value="rarity">Rarity</option>
+              <NativeSelectOption value="name-asc">Name A-Z</option>
+              <NativeSelectOption value="name-desc">Name Z-A</option>
+            </Nativeselect>
           </div>
         </div>
 
@@ -97,16 +96,6 @@ for (const brawler of brawlers) {
             Showing {brawlers.length} of {brawlers.length} brawlers
           </p>
 
-          <div class="rarity-legend" aria-label="Rarity legend">
-            {
-              RARITY_ORDER.map((rarity) => (
-                <span class="rarity-chip" style={`--chip-color:${RARITY_STYLES[rarity].color};`}>
-                  <i class="rarity-dot" aria-hidden="true"></i>
-                  {rarity}
-                </span>
-              ))
-            }
-          </div>
         </div>
       </section>
 
