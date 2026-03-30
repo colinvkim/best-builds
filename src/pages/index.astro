@@ -81,7 +81,7 @@ for (const brawler of brawlers) {
               />
               <InputGroupAddon><Search /></InputGroupAddon>
               <InputGroupAddon align="inline-end">
-                <Kbd>⌘K</Kbd>
+                <Kbd data-shortcut-hint hidden />
               </InputGroupAddon>
             </InputGroup>
           </div>
@@ -141,6 +141,36 @@ for (const brawler of brawlers) {
       const grid = document.querySelector("[data-grid]");
       const count = document.querySelector("[data-results-count]");
       const emptyState = document.querySelector("[data-empty-state]");
+      const shortcutHint = document.querySelector("[data-shortcut-hint]");
+
+      const getPlatformShortcut = () => {
+        const userAgent = navigator.userAgent?.toLowerCase();
+
+        if (userAgent.includes("android") || userAgent.includes("iphone")) {
+          return "";
+        }
+
+        if (userAgent.includes("ipad") || userAgent.includes("mac")) {
+          return "⌘K";
+        }
+
+        if (
+          userAgent.includes("windows") ||
+          userAgent.includes("linux") ||
+          userAgent.includes("x11")
+        ) {
+          return "Ctrl + K";
+        }
+
+        return "";
+      };
+
+      if (shortcutHint instanceof HTMLElement) {
+        const shortcutLabel = getPlatformShortcut();
+
+        shortcutHint.textContent = shortcutLabel;
+        shortcutHint.hidden = shortcutLabel.length === 0;
+      }
 
       if (
         searchInput instanceof HTMLInputElement &&
@@ -223,6 +253,16 @@ for (const brawler of brawlers) {
 
         syncView();
       }
+
+      window.addEventListener("keydown", (event) => {
+        if (
+          (event.metaKey || event.ctrlKey) &&
+          event.key.toLowerCase() === "k"
+        ) {
+          event.preventDefault();
+          document.getElementById("search")?.focus();
+        }
+      });
     </script>
   </body>
 </html>
