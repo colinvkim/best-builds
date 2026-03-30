@@ -5,10 +5,24 @@ import {
   NativeSelect,
   NativeSelectOptGroup,
   NativeSelectOption,
-} from "@/components/ui/native-select"
+} from "@/components/ui/native-select";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+  InputGroupText,
+  InputGroupTextarea,
+} from "@/components/ui/input-group";
+import { Kbd } from "@/components/ui/kbd";
+import { Search } from "lucide-react";
 import BrawlerCard from "../components/BrawlerCard.astro";
 import rawBrawlers from "../data/brawlers.json";
-import { normalizeBrawlers, RARITY_ORDER, RARITY_STYLES } from "../lib/brawlers";
+import {
+  normalizeBrawlers,
+  RARITY_ORDER,
+  RARITY_STYLES,
+} from "../lib/brawlers";
 
 const brawlers = normalizeBrawlers(rawBrawlers).sort((left, right) => {
   if (left.rarityRank !== right.rarityRank) {
@@ -44,11 +58,13 @@ for (const brawler of brawlers) {
       <section class="hero-panel" aria-labelledby="page-title">
         <div class="hero-copy">
           <p class="hero-kicker">Brawl Stars Build Index</p>
-          <h1 id="page-title" class="hero-title">Best setup for every brawler, sorted for speed.</h1>
+          <h1 id="page-title" class="hero-title">
+            Best setup for every brawler, sorted for speed.
+          </h1>
           <p class="hero-copy-text">
             Quickly discover the best builds of brawlers. The UI stays simple on
-            purpose: fast search, predictable sorting, no animation, and image-heavy cards built for
-            quick scanning.
+            purpose: fast search, predictable sorting, no animation, and
+            image-heavy cards built for quick scanning.
           </p>
         </div>
       </section>
@@ -57,24 +73,30 @@ for (const brawler of brawlers) {
         <div class="toolbar-controls">
           <div class="field">
             <label for="search" class="field-label">Search brawler</label>
-            <input
-              id="search"
-              class="field-control"
-              type="search"
-              placeholder="Shelly, Piper, Mortis..."
-              autocomplete="off"
-            />
+            <InputGroup>
+              <InputGroupInput
+                id="search"
+                type="search"
+                placeholder="Search..."
+              />
+              <InputGroupAddon><Search /></InputGroupAddon>
+              <InputGroupAddon align="inline-end">
+                <Kbd>⌘K</Kbd>
+              </InputGroupAddon>
+            </InputGroup>
           </div>
 
           <div class="field">
             <label for="rarity-filter" class="field-label">Rarity</label>
             <NativeSelect id="rarity-filter">
-              <NativeSelectOption value="all">All rarities</option>
+              <NativeSelectOption value="all">All rarities</NativeSelectOption>
               {
                 RARITY_ORDER.map((rarity) => (
                   <NativeSelectOption value={rarity}>
                     {rarity}
-                    {rarityCount.has(rarity) ? ` (${rarityCount.get(rarity)})` : ""}
+                    {rarityCount.has(rarity)
+                      ? ` (${rarityCount.get(rarity)})`
+                      : ""}
                   </NativeSelectOption>
                 ))
               }
@@ -84,10 +106,11 @@ for (const brawler of brawlers) {
           <div class="field">
             <label for="sort-order" class="field-label">Sort by</label>
             <NativeSelect id="sort-order">
-              <NativeSelectOption value="rarity">Rarity</option>
-              <NativeSelectOption value="name-asc">Name A-Z</option>
-              <NativeSelectOption value="name-desc">Name Z-A</option>
-            </Nativeselect>
+              <NativeSelectOption value="rarity">Rarity</NativeSelectOption>
+              <NativeSelectOption value="name-asc">Name A-Z</NativeSelectOption>
+              <NativeSelectOption value="name-desc">Name Z-A</NativeSelectOption
+              >
+            </NativeSelect>
           </div>
         </div>
 
@@ -95,14 +118,11 @@ for (const brawler of brawlers) {
           <p class="results-count" data-results-count>
             Showing {brawlers.length} of {brawlers.length} brawlers
           </p>
-
         </div>
       </section>
 
       <section class="cards-section" aria-labelledby="brawler-list-title">
-        <h2 id="brawler-list-title" class="sr-only">
-          Brawler build list
-        </h2>
+        <h2 id="brawler-list-title" class="sr-only">Brawler build list</h2>
 
         <div class="empty-state" data-empty-state hidden>
           No brawlers matched that search. Try a different name or rarity.
@@ -131,7 +151,7 @@ for (const brawler of brawlers) {
         emptyState instanceof HTMLElement
       ) {
         const cards = Array.from(grid.querySelectorAll("[data-card]")).filter(
-          (card) => card instanceof HTMLElement
+          (card) => card instanceof HTMLElement,
         );
         const total = cards.length;
 
@@ -149,8 +169,12 @@ for (const brawler of brawlers) {
               return rightName.localeCompare(leftName);
             }
 
-            const leftRank = Number(left.getAttribute("data-rarity-rank") ?? "0");
-            const rightRank = Number(right.getAttribute("data-rarity-rank") ?? "0");
+            const leftRank = Number(
+              left.getAttribute("data-rarity-rank") ?? "0",
+            );
+            const rightRank = Number(
+              right.getAttribute("data-rarity-rank") ?? "0",
+            );
 
             if (leftRank !== rightRank) {
               return leftRank - rightRank;
@@ -173,7 +197,8 @@ for (const brawler of brawlers) {
             const name = card.getAttribute("data-name") ?? "";
             const rarity = card.getAttribute("data-rarity") ?? "";
             const matchesQuery = query.length === 0 || name.includes(query);
-            const matchesRarity = selectedRarity === "all" || rarity === selectedRarity;
+            const matchesRarity =
+              selectedRarity === "all" || rarity === selectedRarity;
             const isVisible = matchesQuery && matchesRarity;
 
             card.hidden = !isVisible;
