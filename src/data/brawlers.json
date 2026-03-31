@@ -278,7 +278,13 @@
     "alternativeStarPower": {
       "name": "Master Blaster",
       "icon": "23000142"
-    }
+    },
+    "alternativeGears": [
+      {
+        "name": "Pet Power",
+        "icon": "pet"
+      }
+    ]
   },
   {
     "brawlerName": "Rico",
