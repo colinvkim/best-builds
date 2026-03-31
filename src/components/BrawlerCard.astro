@@ -54,7 +54,11 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
           brawler.gadgetChoices.map((gadget, index) =>
             index === 0 ? (
               <span class="build-choice build-choice--primary">
-                <span class="choice-label">Safe Default</span>
+                {
+                  brawler.gadgetChoices.length > 1 && (
+                    <span class="choice-label">Safe Default</span>
+                  )
+                }
                 <span class="build-choice-content">
                   <img
                     src={gadget.iconUrl}
@@ -101,7 +105,11 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
       </dt>
       <dd class="build-detail build-detail--stack">
         <span class="build-choice build-choice--primary">
-          <span class="choice-label">Safe Default</span>
+          {
+            brawler.alternativeStarPowerChoices.length > 0 && (
+              <span class="choice-label">Safe Default</span>
+            )
+          }
           <span class="build-choice-content">
             <img
               src={brawler.bestStarPowerIconUrl}
