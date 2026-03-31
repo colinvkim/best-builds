@@ -263,7 +263,13 @@
     "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000007.png",
     "rarity": "Super Rare",
     "alternativeGadgetName": "Recoil Spring",
-    "alternativeGadgetIcon": "23000295"
+    "alternativeGadgetIcon": "23000295",
+    "alternativeGears": [
+      {
+        "name": "Pet Power",
+        "icon": "pet"
+      }
+    ]
   },
   {
     "brawlerName": "Penny",
@@ -301,7 +307,13 @@
     "alternativeStarPower": {
       "name": "Robo Retreat",
       "icon": "23000156"
-    }
+    },
+    "alternativeGears": [
+      {
+        "name": "Vision",
+        "icon": "vision"
+      }
+    ]
   },
   {
     "brawlerName": "Tick",
@@ -325,7 +337,13 @@
     "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000079.png",
     "rarity": "Epic",
     "alternativeGadgetName": "Stinging Flight",
-    "alternativeGadgetIcon": "23000677"
+    "alternativeGadgetIcon": "23000677",
+    "alternativeGears": [
+      {
+        "name": "Health",
+        "icon": "health"
+      }
+    ]
   },
   {
     "brawlerName": "Ash",
