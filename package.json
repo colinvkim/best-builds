@@ -8,7 +8,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "normalize:icon-ids": "node scripts/normalize-brawler-icon-ids.mjs"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.2",

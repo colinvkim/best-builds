@@ -18,12 +18,12 @@ Each brawler entry must contain these fields:
 {
   "brawlerName": "Shelly",
   "bestGadgetName": "Fast Forward",
-  "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000255.png",
+  "bestGadgetIcon": "23000255",
   "bestStarPowerName": "Shell Shock",
-  "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000076.png",
+  "bestStarPowerIcon": "23000076",
   "best2Gears": ["Damage", "Shield"],
   "best2GearsIcon": ["damage", "shield"],
-  "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000000.png",
+  "brawlerIcon": "16000000",
   "rarity": "Starting Brawler"
 }
 ```
@@ -34,9 +34,7 @@ If a brawler has a clear default plus niche alternatives, you can add these opti
 {
   "alternativeGadgetName": "Clay Pigeons",
   "alternativeGadgetIcon": "23000269",
-  "alternativeStarPowers": [
-    { "name": "Band-Aid", "icon": "23000077" }
-  ],
+  "alternativeStarPower": { "name": "Band-Aid", "icon": "23000077" },
   "alternativeGears": [
     { "name": "Speed", "icon": "speed" },
     { "name": "Vision", "icon": "vision" }
@@ -52,7 +50,7 @@ Brawlify's own CDN README says the CDN is meant to be linked programmatically wi
 
 You can see that format here: [`src/data/brawlers.ids.example.json`](/Users/colin/Programming/best-builds/src/data/brawlers.ids.example.json)
 
-If you want less typing, the site also accepts raw Brawlify asset IDs in any icon field instead of full URLs.
+If you want less typing, the site accepts raw Brawlify asset IDs in any icon field instead of full URLs.
 
 Examples:
 
@@ -62,3 +60,22 @@ Examples:
 - `"brawlerIcon": "16000000"`
 
 Gear icons are now local assets in [`src/assets/gears`](/Users/colin/Programming/best-builds/src/assets/gears), so `best2GearsIcon` should match the local filename without the extension. Astro optimizes those images at build time.
+
+## CDN base URL
+
+The JSON only needs icon IDs. The app builds the full icon URL at runtime using the CDN base URL configured in:
+
+- [`src/lib/brawlers.ts`](/Users/colin/Programming/best-builds/src/lib/brawlers.ts)
+- `PUBLIC_BRAWLIFY_CDN_BASE_URL` in `.env`
+
+You can copy [`.env.example`](/Users/colin/Programming/best-builds/.env.example) to `.env` and change that one value if the CDN host ever changes.
+
+## Bulk conversion
+
+If you import data that still contains full gadget/star power URLs, run:
+
+```bash
+pnpm run normalize:icon-ids
+```
+
+That script rewrites `bestGadgetIcon`, `alternativeGadgetIcon`, `bestStarPowerIcon`, and `alternativeStarPower.icon` in [`src/data/brawlers.json`](/Users/colin/Programming/best-builds/src/data/brawlers.json) to just the asset ID. It also migrates legacy `alternativeStarPowers` arrays to a single `alternativeStarPower` object.

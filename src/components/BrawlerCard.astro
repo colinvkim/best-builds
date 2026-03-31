@@ -100,11 +100,16 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
     <div class="build-row">
       <dt class="build-term">
         <span>Star Power</span>
+        {
+          brawler.alternativeStarPowerChoice && (
+            <span class="build-note">Default + niche</span>
+          )
+        }
       </dt>
       <dd class="build-detail build-detail--stack">
         <span class="build-choice build-choice--primary">
           {
-            brawler.alternativeStarPowerChoices.length > 0 && (
+            brawler.alternativeStarPowerChoice && (
               <span class="choice-label">Safe Default</span>
             )
           }
@@ -122,23 +127,23 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
           </span>
         </span>
         {
-          brawler.alternativeStarPowerChoices.map((starPower) => (
+          brawler.alternativeStarPowerChoice && (
             <span class="build-choice build-choice--secondary">
               <span class="choice-label">Niche Pick</span>
               <span class="build-choice-content">
                 <img
-                  src={starPower.iconUrl}
-                  alt={`${starPower.name} icon`}
+                  src={brawler.alternativeStarPowerChoice.iconUrl}
+                  alt={`${brawler.alternativeStarPowerChoice.name} icon`}
                   width="48"
                   height="48"
                   loading="lazy"
                   decoding="async"
                   fetchpriority="low"
                 />
-                <span class="build-copy">{starPower.name}</span>
+                <span class="build-copy">{brawler.alternativeStarPowerChoice.name}</span>
               </span>
             </span>
-          ))
+          )
         }
       </dd>
     </div>

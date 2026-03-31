@@ -50,7 +50,7 @@ type BuildDraft = {
   primaryGadgetId: string | null
   useBothGadgets: boolean
   primaryStarPowerId: string | null
-  alternativeStarPowerIds: string[]
+  alternativeStarPowerId: string | null
   primaryGears: SelectedGear[]
   alternativeGears: SelectedGear[]
 }
@@ -173,7 +173,7 @@ const makeEmptyDraft = (): BuildDraft => ({
   primaryGadgetId: null,
   useBothGadgets: false,
   primaryStarPowerId: null,
-  alternativeStarPowerIds: [],
+  alternativeStarPowerId: null,
   primaryGears: [],
   alternativeGears: [],
 })
@@ -207,11 +207,9 @@ const createSeedDraft = (
       },
     ]
   })
-  const alternativeStarPowerIds = (existing.alternativeStarPowers ?? []).flatMap((choice) => {
-    const match = brawler.starPowers.find((starPower) => starPower.name === choice.name)
-
-    return match ? [match.id] : []
-  })
+  const alternativeStarPowerId = existing.alternativeStarPower
+    ? brawler.starPowers.find((starPower) => starPower.name === existing.alternativeStarPower?.name)?.id ?? null
+    : null
   const alternativeGears = (existing.alternativeGears ?? []).flatMap((choice) => {
     const key = toGearKey(choice.icon)
 
@@ -233,7 +231,10 @@ const createSeedDraft = (
       Boolean(existing.alternativeGadgetName) &&
       brawler.gadgets.some((gadget) => gadget.name === existing.alternativeGadgetName),
     primaryStarPowerId,
-    alternativeStarPowerIds: alternativeStarPowerIds.filter((id) => id !== primaryStarPowerId),
+    alternativeStarPowerId:
+      alternativeStarPowerId && alternativeStarPowerId !== primaryStarPowerId
+        ? alternativeStarPowerId
+        : null,
     primaryGears,
     alternativeGears: alternativeGears.filter(
       (gear) => !primaryGears.some((primaryGear) => primaryGear.key === gear.key)
@@ -284,18 +285,10 @@ const buildOutputRow = (brawler: ApiBrawler, draft: BuildDraft): RawBrawler | nu
     return null
   }
 
-  const alternativeStarPowers = draft.alternativeStarPowerIds.flatMap((id) => {
-    const match = brawler.starPowers.find((entry) => entry.id === id && entry.id !== primaryStarPower.id)
-
-    return match
-      ? [
-          {
-            name: match.name,
-            icon: match.imageUrl,
-          },
-        ]
-      : []
-  })
+  const alternativeStarPower =
+    draft.alternativeStarPowerId && draft.alternativeStarPowerId !== primaryStarPower.id
+      ? brawler.starPowers.find((entry) => entry.id === draft.alternativeStarPowerId) ?? null
+      : null
   const alternativeGears = draft.alternativeGears
     .filter(
       (gear) =>
@@ -328,8 +321,11 @@ const buildOutputRow = (brawler: ApiBrawler, draft: BuildDraft): RawBrawler | nu
     }
   }
 
-  if (alternativeStarPowers.length > 0) {
-    nextRow.alternativeStarPowers = alternativeStarPowers
+  if (alternativeStarPower) {
+    nextRow.alternativeStarPower = {
+      name: alternativeStarPower.name,
+      icon: alternativeStarPower.imageUrl,
+    }
   }
 
   if (alternativeGears.length > 0) {
@@ -896,11 +892,7 @@ export default function BuildDashboard({ currentBuilds, gearOptions }: Props) {
                       </h3>
                     </div>
                     <Badge variant={selectedDraft.primaryStarPowerId ? "secondary" : "outline"}>
-                      {selectedDraft.alternativeStarPowerIds.length > 0
-                        ? `${selectedDraft.alternativeStarPowerIds.length} niche backup${
-                            selectedDraft.alternativeStarPowerIds.length === 1 ? "" : "s"
-                          }`
-                        : "Default only"}
+                      {selectedDraft.alternativeStarPowerId ? "1 niche backup" : "Default only"}
                     </Badge>
                   </div>
 
@@ -916,9 +908,10 @@ export default function BuildDashboard({ currentBuilds, gearOptions }: Props) {
                             updateDraft(selectedBrawler.id, (draft) => ({
                               ...draft,
                               primaryStarPowerId: starPower.id,
-                              alternativeStarPowerIds: draft.alternativeStarPowerIds.filter(
-                                (id) => id !== starPower.id
-                              ),
+                              alternativeStarPowerId:
+                                draft.alternativeStarPowerId === starPower.id
+                                  ? null
+                                  : draft.alternativeStarPowerId,
                             }))
                           }
                           className={`grid min-h-28 gap-3 rounded-[22px] border p-4 text-left transition ${
@@ -954,10 +947,10 @@ export default function BuildDashboard({ currentBuilds, gearOptions }: Props) {
                     <div className="grid gap-3 rounded-[22px] border border-slate-200 bg-slate-50 p-4">
                       <div>
                         <p className="m-0 text-xs font-black uppercase tracking-[0.12em] text-slate-500">
-                          Niche Star Powers
+                          Niche Star Power
                         </p>
                         <p className="mt-1 mb-0 text-sm leading-6 text-slate-600">
-                          Mark any non-default star powers that are still worth calling out on the public card.
+                          Mark the other star power if it is still worth calling out on the public card.
                         </p>
                       </div>
 
@@ -965,7 +958,7 @@ export default function BuildDashboard({ currentBuilds, gearOptions }: Props) {
                         {selectedBrawler.starPowers
                           .filter((starPower) => starPower.id !== selectedDraft.primaryStarPowerId)
                           .map((starPower) => {
-                            const isSelected = selectedDraft.alternativeStarPowerIds.includes(starPower.id)
+                            const isSelected = selectedDraft.alternativeStarPowerId === starPower.id
 
                             return (
                               <button
@@ -974,9 +967,7 @@ export default function BuildDashboard({ currentBuilds, gearOptions }: Props) {
                                 onClick={() =>
                                   updateDraft(selectedBrawler.id, (draft) => ({
                                     ...draft,
-                                    alternativeStarPowerIds: isSelected
-                                      ? draft.alternativeStarPowerIds.filter((id) => id !== starPower.id)
-                                      : [...draft.alternativeStarPowerIds, starPower.id],
+                                    alternativeStarPowerId: isSelected ? null : starPower.id,
                                   }))
                                 }
                                 className={`grid min-h-24 gap-3 rounded-[20px] border p-4 text-left transition ${

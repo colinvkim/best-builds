@@ -7,9 +7,7 @@
     "alternativeGadgetIcon": "23000256",
     "bestStarPowerName": "Shell Shock",
     "bestStarPowerIcon": "23000076",
-    "alternativeStarPowers": [
-      { "name": "Band-Aid", "icon": "23000077" }
-    ],
+    "alternativeStarPower": { "name": "Band-Aid", "icon": "23000077" },
     "best2Gears": ["Damage", "Shield"],
     "best2GearsIcon": ["damage", "shield"],
     "alternativeGears": [
