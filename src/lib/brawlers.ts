@@ -14,6 +14,11 @@ export type Rarity = (typeof RARITY_ORDER)[number];
 
 export type IconInput = string;
 
+export type AlternativeChoiceInput = {
+  name: string;
+  icon: IconInput;
+};
+
 export type RawBrawler = {
   brawlerName: string;
   bestGadgetName: string;
@@ -22,8 +27,10 @@ export type RawBrawler = {
   alternativeGadgetIcon?: IconInput;
   bestStarPowerName: string;
   bestStarPowerIcon: IconInput;
+  alternativeStarPowers?: AlternativeChoiceInput[];
   best2Gears: [string, string];
   best2GearsIcon: [IconInput, IconInput];
+  alternativeGears?: AlternativeChoiceInput[];
   brawlerIcon: IconInput;
   rarity: Rarity;
 };
@@ -33,12 +40,23 @@ export type GadgetChoice = {
   iconUrl: string;
 };
 
+export type GearChoice = {
+  key: string;
+  name: string;
+  image: ImageMetadata;
+};
+
 export type Brawler = RawBrawler & {
   bestGadgetIconUrl: string;
   alternativeGadgetIconUrl?: string;
   gadgetChoices: GadgetChoice[];
   bestStarPowerIconUrl: string;
+  alternativeStarPowerChoices: GadgetChoice[];
+  starPowerChoices: GadgetChoice[];
   best2GearsImage: [ImageMetadata, ImageMetadata];
+  bestGearChoices: [GearChoice, GearChoice];
+  alternativeGearChoices: GearChoice[];
+  allGearChoices: GearChoice[];
   brawlerIconUrl: string;
   rarityRank: number;
   searchIndex: string;
@@ -160,6 +178,14 @@ const isNonEmptyString = (value: unknown): value is string =>
 const isRarity = (value: unknown): value is Rarity =>
   typeof value === "string" && RARITY_ORDER.includes(value as Rarity);
 
+const isAlternativeChoiceInput = (value: unknown): value is AlternativeChoiceInput =>
+  Boolean(
+    value &&
+      typeof value === "object" &&
+      isNonEmptyString((value as { name?: unknown }).name) &&
+      isNonEmptyString((value as { icon?: unknown }).icon)
+  );
+
 const normalizeIcon = (value: string, kind: IconKind): string => {
   const trimmed = value.trim();
 
@@ -233,6 +259,16 @@ export const normalizeBrawlers = (data: unknown): Brawler[] => {
     }
 
     if (
+      candidate.alternativeStarPowers !== undefined &&
+      (!Array.isArray(candidate.alternativeStarPowers) ||
+        !candidate.alternativeStarPowers.every(isAlternativeChoiceInput))
+    ) {
+      throw new Error(
+        `Brawler entry "${candidate.brawlerName}" must provide alternative star powers as { name, icon } objects.`
+      );
+    }
+
+    if (
       !Array.isArray(candidate.best2Gears) ||
       candidate.best2Gears.length !== 2 ||
       !candidate.best2Gears.every(isNonEmptyString)
@@ -248,6 +284,16 @@ export const normalizeBrawlers = (data: unknown): Brawler[] => {
       throw new Error(`Brawler entry "${candidate.brawlerName}" must contain exactly 2 gear icons.`);
     }
 
+    if (
+      candidate.alternativeGears !== undefined &&
+      (!Array.isArray(candidate.alternativeGears) ||
+        !candidate.alternativeGears.every(isAlternativeChoiceInput))
+    ) {
+      throw new Error(
+        `Brawler entry "${candidate.brawlerName}" must provide alternative gears as { name, icon } objects.`
+      );
+    }
+
     const brawlerName = candidate.brawlerName;
     const bestGadgetName = candidate.bestGadgetName;
     const bestGadgetIcon = candidate.bestGadgetIcon;
@@ -255,6 +301,10 @@ export const normalizeBrawlers = (data: unknown): Brawler[] => {
     const alternativeGadgetIcon = candidate.alternativeGadgetIcon?.trim();
     const bestStarPowerName = candidate.bestStarPowerName;
     const bestStarPowerIcon = candidate.bestStarPowerIcon;
+    const alternativeStarPowers = (candidate.alternativeStarPowers ?? []).map((choice) => ({
+      name: choice.name.trim(),
+      icon: choice.icon.trim()
+    }));
     const brawlerIcon = candidate.brawlerIcon;
     const rarity = candidate.rarity;
     const best2Gears: [string, string] = [candidate.best2Gears[0], candidate.best2Gears[1]];
@@ -262,12 +312,43 @@ export const normalizeBrawlers = (data: unknown): Brawler[] => {
       candidate.best2GearsIcon[0],
       candidate.best2GearsIcon[1]
     ];
+    const alternativeGears = (candidate.alternativeGears ?? []).map((choice) => ({
+      name: choice.name.trim(),
+      icon: choice.icon.trim()
+    }));
     const rarityRank = RARITY_ORDER.indexOf(rarity);
     const bestGadgetIconUrl = normalizeIcon(bestGadgetIcon, "gadget");
     const alternativeGadgetIconUrl = alternativeGadgetIcon
       ? normalizeIcon(alternativeGadgetIcon, "gadget")
       : undefined;
     const gadgetChoices: GadgetChoice[] = [{ name: bestGadgetName, iconUrl: bestGadgetIconUrl }];
+    const bestStarPowerIconUrl = normalizeIcon(bestStarPowerIcon, "star-power");
+    const alternativeStarPowerChoices: GadgetChoice[] = alternativeStarPowers.map((choice) => ({
+      name: choice.name,
+      iconUrl: normalizeIcon(choice.icon, "star-power")
+    }));
+    const starPowerChoices: GadgetChoice[] = [
+      { name: bestStarPowerName, iconUrl: bestStarPowerIconUrl },
+      ...alternativeStarPowerChoices
+    ];
+    const bestGearChoices: [GearChoice, GearChoice] = [
+      {
+        key: toAssetKey(best2GearsIcon[0]),
+        name: best2Gears[0],
+        image: resolveGearImage(best2GearsIcon[0], best2Gears[0])
+      },
+      {
+        key: toAssetKey(best2GearsIcon[1]),
+        name: best2Gears[1],
+        image: resolveGearImage(best2GearsIcon[1], best2Gears[1])
+      }
+    ];
+    const alternativeGearChoices: GearChoice[] = alternativeGears.map((choice) => ({
+      key: toAssetKey(choice.icon),
+      name: choice.name,
+      image: resolveGearImage(choice.icon, choice.name)
+    }));
+    const allGearChoices: GearChoice[] = [...bestGearChoices, ...alternativeGearChoices];
 
     if (alternativeGadgetName && alternativeGadgetIconUrl) {
       gadgetChoices.push({ name: alternativeGadgetName, iconUrl: alternativeGadgetIconUrl });
@@ -281,18 +362,25 @@ export const normalizeBrawlers = (data: unknown): Brawler[] => {
       alternativeGadgetIcon,
       bestStarPowerName,
       bestStarPowerIcon,
+      alternativeStarPowers,
       best2Gears,
       best2GearsIcon,
+      alternativeGears,
       brawlerIcon,
       rarity,
       bestGadgetIconUrl,
       alternativeGadgetIconUrl,
       gadgetChoices,
-      bestStarPowerIconUrl: normalizeIcon(bestStarPowerIcon, "star-power"),
+      bestStarPowerIconUrl,
+      alternativeStarPowerChoices,
+      starPowerChoices,
       best2GearsImage: [
-        resolveGearImage(best2GearsIcon[0], best2Gears[0]),
-        resolveGearImage(best2GearsIcon[1], best2Gears[1])
+        bestGearChoices[0].image,
+        bestGearChoices[1].image
       ],
+      bestGearChoices,
+      alternativeGearChoices,
+      allGearChoices,
       brawlerIconUrl: normalizeIcon(brawlerIcon, "brawler"),
       rarityRank,
       searchIndex: [brawlerName, rarity].join(" ").toLowerCase()

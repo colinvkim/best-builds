@@ -49,8 +49,10 @@ type SelectedGear = {
 type BuildDraft = {
   primaryGadgetId: string | null
   useBothGadgets: boolean
-  starPowerId: string | null
-  gears: SelectedGear[]
+  primaryStarPowerId: string | null
+  alternativeStarPowerIds: string[]
+  primaryGears: SelectedGear[]
+  alternativeGears: SelectedGear[]
 }
 
 type Props = {
@@ -170,8 +172,10 @@ const parseBrawlers = (payload: unknown): ApiBrawler[] => {
 const makeEmptyDraft = (): BuildDraft => ({
   primaryGadgetId: null,
   useBothGadgets: false,
-  starPowerId: null,
-  gears: [],
+  primaryStarPowerId: null,
+  alternativeStarPowerIds: [],
+  primaryGears: [],
+  alternativeGears: [],
 })
 
 const createSeedDraft = (
@@ -187,9 +191,9 @@ const createSeedDraft = (
 
   const primaryGadgetId =
     brawler.gadgets.find((gadget) => gadget.name === existing.bestGadgetName)?.id ?? null
-  const starPowerId =
+  const primaryStarPowerId =
     brawler.starPowers.find((starPower) => starPower.name === existing.bestStarPowerName)?.id ?? null
-  const gears = existing.best2GearsIcon.flatMap((icon, index) => {
+  const primaryGears = existing.best2GearsIcon.flatMap((icon, index) => {
     const key = toGearKey(icon)
 
     if (!key) {
@@ -203,14 +207,37 @@ const createSeedDraft = (
       },
     ]
   })
+  const alternativeStarPowerIds = (existing.alternativeStarPowers ?? []).flatMap((choice) => {
+    const match = brawler.starPowers.find((starPower) => starPower.name === choice.name)
+
+    return match ? [match.id] : []
+  })
+  const alternativeGears = (existing.alternativeGears ?? []).flatMap((choice) => {
+    const key = toGearKey(choice.icon)
+
+    if (!key) {
+      return []
+    }
+
+    return [
+      {
+        key,
+        label: choice.name.trim() || (gearOptionByKey.get(key)?.name ?? key),
+      },
+    ]
+  })
 
   return {
     primaryGadgetId,
     useBothGadgets:
       Boolean(existing.alternativeGadgetName) &&
       brawler.gadgets.some((gadget) => gadget.name === existing.alternativeGadgetName),
-    starPowerId,
-    gears,
+    primaryStarPowerId,
+    alternativeStarPowerIds: alternativeStarPowerIds.filter((id) => id !== primaryStarPowerId),
+    primaryGears,
+    alternativeGears: alternativeGears.filter(
+      (gear) => !primaryGears.some((primaryGear) => primaryGear.key === gear.key)
+    ),
   }
 }
 
@@ -222,14 +249,17 @@ const getMissingFields = (brawler: ApiBrawler, draft: BuildDraft): string[] => {
   }
 
   if (
-    !draft.starPowerId ||
-    !brawler.starPowers.some((starPower) => starPower.id === draft.starPowerId)
+    !draft.primaryStarPowerId ||
+    !brawler.starPowers.some((starPower) => starPower.id === draft.primaryStarPowerId)
   ) {
-    missing.push("star power")
+    missing.push("primary star power")
   }
 
-  if (draft.gears.length !== 2 || draft.gears.some((gear) => gear.label.trim().length === 0)) {
-    missing.push("2 gears")
+  if (
+    draft.primaryGears.length !== 2 ||
+    draft.primaryGears.some((gear) => gear.label.trim().length === 0)
+  ) {
+    missing.push("primary 2-gear pair")
   }
 
   if (rarityRank(brawler.rarity) === RARITY_ORDER.length) {
@@ -247,21 +277,44 @@ const buildOutputRow = (brawler: ApiBrawler, draft: BuildDraft): RawBrawler | nu
   }
 
   const primaryGadget = brawler.gadgets.find((gadget) => gadget.id === draft.primaryGadgetId)
-  const starPower = brawler.starPowers.find((entry) => entry.id === draft.starPowerId)
+  const primaryStarPower = brawler.starPowers.find((entry) => entry.id === draft.primaryStarPowerId)
   const rarity = brawler.rarity as RawBrawler["rarity"]
 
-  if (!primaryGadget || !starPower) {
+  if (!primaryGadget || !primaryStarPower) {
     return null
   }
+
+  const alternativeStarPowers = draft.alternativeStarPowerIds.flatMap((id) => {
+    const match = brawler.starPowers.find((entry) => entry.id === id && entry.id !== primaryStarPower.id)
+
+    return match
+      ? [
+          {
+            name: match.name,
+            icon: match.imageUrl,
+          },
+        ]
+      : []
+  })
+  const alternativeGears = draft.alternativeGears
+    .filter(
+      (gear) =>
+        gear.label.trim().length > 0 &&
+        !draft.primaryGears.some((primaryGear) => primaryGear.key === gear.key)
+    )
+    .map((gear) => ({
+      name: gear.label.trim(),
+      icon: gear.key,
+    }))
 
   const nextRow: RawBrawler = {
     brawlerName: brawler.name,
     bestGadgetName: primaryGadget.name,
     bestGadgetIcon: primaryGadget.imageUrl,
-    bestStarPowerName: starPower.name,
-    bestStarPowerIcon: starPower.imageUrl,
-    best2Gears: [draft.gears[0].label.trim(), draft.gears[1].label.trim()],
-    best2GearsIcon: [draft.gears[0].key, draft.gears[1].key],
+    bestStarPowerName: primaryStarPower.name,
+    bestStarPowerIcon: primaryStarPower.imageUrl,
+    best2Gears: [draft.primaryGears[0].label.trim(), draft.primaryGears[1].label.trim()],
+    best2GearsIcon: [draft.primaryGears[0].key, draft.primaryGears[1].key],
     brawlerIcon: brawler.imageUrl,
     rarity,
   }
@@ -273,6 +326,14 @@ const buildOutputRow = (brawler: ApiBrawler, draft: BuildDraft): RawBrawler | nu
       nextRow.alternativeGadgetName = alternativeGadget.name
       nextRow.alternativeGadgetIcon = alternativeGadget.imageUrl
     }
+  }
+
+  if (alternativeStarPowers.length > 0) {
+    nextRow.alternativeStarPowers = alternativeStarPowers
+  }
+
+  if (alternativeGears.length > 0) {
+    nextRow.alternativeGears = alternativeGears
   }
 
   return nextRow
@@ -417,7 +478,7 @@ export default function BuildDashboard({ currentBuilds, gearOptions }: Props) {
   const incompleteCount = brawlers.length === 0 ? 0 : brawlers.length - readyCount
   const selectedMissing = selectedBrawler ? getMissingFields(selectedBrawler, selectedDraft) : []
   const selectedOutput = selectedBrawler ? buildOutputRow(selectedBrawler, selectedDraft) : null
-  const selectedAlternative =
+  const selectedAlternativeGadget =
     selectedBrawler && selectedDraft.primaryGadgetId
       ? selectedBrawler.gadgets.find((gadget) => gadget.id !== selectedDraft.primaryGadgetId) ?? null
       : null
@@ -551,7 +612,7 @@ export default function BuildDashboard({ currentBuilds, gearOptions }: Props) {
                 {incompleteCount}
               </p>
               <p className="mt-2 mb-0 text-sm leading-6 text-slate-600">
-                Loaded brawlers without a complete gadget, star power, and 2-gear selection yet.
+                Loaded brawlers without a complete gadget, primary star power, and default 2-gear pair yet.
               </p>
             </div>
           </div>
@@ -752,8 +813,8 @@ export default function BuildDashboard({ currentBuilds, gearOptions }: Props) {
                         Choose the main gadget.
                       </h3>
                     </div>
-                    {selectedDraft.useBothGadgets && selectedAlternative && (
-                      <Badge variant="secondary">Also showing {selectedAlternative.name}</Badge>
+                    {selectedDraft.useBothGadgets && selectedAlternativeGadget && (
+                      <Badge variant="secondary">Niche backup: {selectedAlternativeGadget.name}</Badge>
                     )}
                   </div>
 
@@ -793,7 +854,7 @@ export default function BuildDashboard({ currentBuilds, gearOptions }: Props) {
                                   isSelected ? "text-slate-300" : "text-slate-500"
                                 }`}
                               >
-                                Primary gadget in the exported JSON.
+                                The default gadget people can safely run most of the time.
                               </p>
                             </div>
                           </div>
@@ -815,28 +876,37 @@ export default function BuildDashboard({ currentBuilds, gearOptions }: Props) {
                       className="mt-1 h-4 w-4 rounded border-slate-300"
                     />
                     <span>
-                      <span className="block font-semibold text-slate-950">Show both gadgets on the site</span>
+                      <span className="block font-semibold text-slate-950">Also show the niche gadget</span>
                       <span className="mt-1 block leading-6 text-slate-500">
-                        Use this when both gadget picks are genuinely viable. The unselected gadget becomes
-                        the situational backup automatically.
+                        Use this when the other gadget is still good in the right mode or matchup. The site
+                        keeps your chosen gadget as the clear winner and presents the other one as the niche backup.
                       </span>
                     </span>
                   </label>
                 </div>
 
                 <div className="space-y-3">
-                  <div>
-                    <p className="m-0 text-xs font-black uppercase tracking-[0.12em] text-slate-500">
-                      Star Power
-                    </p>
-                    <h3 className="mt-1 mb-0 text-2xl font-black tracking-[-0.04em] text-slate-950">
-                      Pick the best star power.
-                    </h3>
+                  <div className="flex flex-wrap items-end justify-between gap-3">
+                    <div>
+                      <p className="m-0 text-xs font-black uppercase tracking-[0.12em] text-slate-500">
+                        Star Power
+                      </p>
+                      <h3 className="mt-1 mb-0 text-2xl font-black tracking-[-0.04em] text-slate-950">
+                        Pick the clear default star power.
+                      </h3>
+                    </div>
+                    <Badge variant={selectedDraft.primaryStarPowerId ? "secondary" : "outline"}>
+                      {selectedDraft.alternativeStarPowerIds.length > 0
+                        ? `${selectedDraft.alternativeStarPowerIds.length} niche backup${
+                            selectedDraft.alternativeStarPowerIds.length === 1 ? "" : "s"
+                          }`
+                        : "Default only"}
+                    </Badge>
                   </div>
 
                   <div className="grid gap-3 md:grid-cols-2">
                     {selectedBrawler.starPowers.map((starPower) => {
-                      const isSelected = selectedDraft.starPowerId === starPower.id
+                      const isSelected = selectedDraft.primaryStarPowerId === starPower.id
 
                       return (
                         <button
@@ -845,7 +915,10 @@ export default function BuildDashboard({ currentBuilds, gearOptions }: Props) {
                           onClick={() =>
                             updateDraft(selectedBrawler.id, (draft) => ({
                               ...draft,
-                              starPowerId: starPower.id,
+                              primaryStarPowerId: starPower.id,
+                              alternativeStarPowerIds: draft.alternativeStarPowerIds.filter(
+                                (id) => id !== starPower.id
+                              ),
                             }))
                           }
                           className={`grid min-h-28 gap-3 rounded-[22px] border p-4 text-left transition ${
@@ -868,7 +941,7 @@ export default function BuildDashboard({ currentBuilds, gearOptions }: Props) {
                                 {starPower.name}
                               </p>
                               <p className="mt-2 mb-0 text-sm leading-6 text-slate-500">
-                                Exported as the recommended star power.
+                                Your default star power in the exported JSON.
                               </p>
                             </div>
                           </div>
@@ -876,6 +949,68 @@ export default function BuildDashboard({ currentBuilds, gearOptions }: Props) {
                       )
                     })}
                   </div>
+
+                  {selectedBrawler.starPowers.length > 1 && (
+                    <div className="grid gap-3 rounded-[22px] border border-slate-200 bg-slate-50 p-4">
+                      <div>
+                        <p className="m-0 text-xs font-black uppercase tracking-[0.12em] text-slate-500">
+                          Niche Star Powers
+                        </p>
+                        <p className="mt-1 mb-0 text-sm leading-6 text-slate-600">
+                          Mark any non-default star powers that are still worth calling out on the public card.
+                        </p>
+                      </div>
+
+                      <div className="grid gap-3 md:grid-cols-2">
+                        {selectedBrawler.starPowers
+                          .filter((starPower) => starPower.id !== selectedDraft.primaryStarPowerId)
+                          .map((starPower) => {
+                            const isSelected = selectedDraft.alternativeStarPowerIds.includes(starPower.id)
+
+                            return (
+                              <button
+                                key={starPower.id}
+                                type="button"
+                                onClick={() =>
+                                  updateDraft(selectedBrawler.id, (draft) => ({
+                                    ...draft,
+                                    alternativeStarPowerIds: isSelected
+                                      ? draft.alternativeStarPowerIds.filter((id) => id !== starPower.id)
+                                      : [...draft.alternativeStarPowerIds, starPower.id],
+                                  }))
+                                }
+                                className={`grid min-h-24 gap-3 rounded-[20px] border p-4 text-left transition ${
+                                  isSelected
+                                    ? "border-slate-900 bg-slate-900 text-white shadow-[0_10px_24px_rgba(15,23,42,0.12)]"
+                                    : "border-slate-200 bg-white hover:border-slate-400 hover:bg-slate-100"
+                                }`}
+                              >
+                                <div className="flex items-start gap-3">
+                                  <img
+                                    src={starPower.imageUrl}
+                                    alt={`${starPower.name} icon`}
+                                    width={46}
+                                    height={46}
+                                    className="h-[46px] w-[46px] rounded-2xl bg-white p-1.5 object-contain"
+                                    loading="lazy"
+                                  />
+                                  <div className="min-w-0">
+                                    <p className="m-0 text-base leading-tight font-black">{starPower.name}</p>
+                                    <p
+                                      className={`mt-2 mb-0 text-sm leading-6 ${
+                                        isSelected ? "text-slate-300" : "text-slate-500"
+                                      }`}
+                                    >
+                                      Show this as a situational backup, not the default.
+                                    </p>
+                                  </div>
+                                </div>
+                              </button>
+                            )
+                          })}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 <div className="space-y-4">
@@ -885,18 +1020,20 @@ export default function BuildDashboard({ currentBuilds, gearOptions }: Props) {
                         Gears
                       </p>
                       <h3 className="mt-1 mb-0 text-2xl font-black tracking-[-0.04em] text-slate-950">
-                        Pick exactly 2 gears.
+                        Pick the default 2-gear pair.
                       </h3>
                     </div>
-                    <Badge variant={selectedDraft.gears.length === 2 ? "secondary" : "outline"}>
-                      {selectedDraft.gears.length}/2 selected
+                    <Badge variant={selectedDraft.primaryGears.length === 2 ? "secondary" : "outline"}>
+                      {selectedDraft.primaryGears.length}/2 selected
                     </Badge>
                   </div>
 
                   <div className="grid grid-cols-[repeat(auto-fit,minmax(96px,1fr))] gap-3">
                     {gearOptions.map((gear) => {
-                      const isSelected = selectedDraft.gears.some((selectedGear) => selectedGear.key === gear.key)
-                      const isFull = selectedDraft.gears.length >= 2
+                      const isSelected = selectedDraft.primaryGears.some(
+                        (selectedGear) => selectedGear.key === gear.key
+                      )
+                      const isFull = selectedDraft.primaryGears.length >= 2
 
                       return (
                         <button
@@ -905,24 +1042,29 @@ export default function BuildDashboard({ currentBuilds, gearOptions }: Props) {
                           aria-pressed={isSelected}
                           onClick={() =>
                             updateDraft(selectedBrawler.id, (draft) => {
-                              const existingIndex = draft.gears.findIndex(
+                              const existingIndex = draft.primaryGears.findIndex(
                                 (selectedGear) => selectedGear.key === gear.key
                               )
 
                               if (existingIndex !== -1) {
                                 return {
                                   ...draft,
-                                  gears: draft.gears.filter((selectedGear) => selectedGear.key !== gear.key),
+                                  primaryGears: draft.primaryGears.filter(
+                                    (selectedGear) => selectedGear.key !== gear.key
+                                  ),
                                 }
                               }
 
-                              if (draft.gears.length >= 2) {
+                              if (draft.primaryGears.length >= 2) {
                                 return draft
                               }
 
                               return {
                                 ...draft,
-                                gears: [...draft.gears, { key: gear.key, label: gear.name }],
+                                primaryGears: [...draft.primaryGears, { key: gear.key, label: gear.name }],
+                                alternativeGears: draft.alternativeGears.filter(
+                                  (selectedGear) => selectedGear.key !== gear.key
+                                ),
                               }
                             })
                           }
@@ -949,12 +1091,12 @@ export default function BuildDashboard({ currentBuilds, gearOptions }: Props) {
                   </div>
 
                   <div className="grid gap-3">
-                    {selectedDraft.gears.length === 0 ? (
+                    {selectedDraft.primaryGears.length === 0 ? (
                       <div className="rounded-[22px] border border-dashed border-slate-300 bg-slate-50 px-4 py-5 text-sm leading-6 text-slate-500">
-                        Select 2 gears, then tweak the labels below if you want different text in the public card.
+                        Select the default 2-gear pair, then tweak the labels if you want different text on the public card.
                       </div>
                     ) : (
-                      selectedDraft.gears.map((gear) => {
+                      selectedDraft.primaryGears.map((gear) => {
                         const option = gearOptionByKey.get(gear.key)
 
                         return (
@@ -975,7 +1117,7 @@ export default function BuildDashboard({ currentBuilds, gearOptions }: Props) {
                               )}
                               <div>
                                 <p className="m-0 text-xs font-black uppercase tracking-[0.12em] text-slate-500">
-                                  Selected gear
+                                  Default gear
                                 </p>
                                 <p className="mt-1 mb-0 text-sm font-semibold text-slate-950">{gear.key}</p>
                               </div>
@@ -985,7 +1127,7 @@ export default function BuildDashboard({ currentBuilds, gearOptions }: Props) {
                               onChange={(event) =>
                                 updateDraft(selectedBrawler.id, (draft) => ({
                                   ...draft,
-                                  gears: draft.gears.map((selectedGear) =>
+                                  primaryGears: draft.primaryGears.map((selectedGear) =>
                                     selectedGear.key === gear.key
                                       ? { ...selectedGear, label: event.target.value }
                                       : selectedGear
@@ -1000,7 +1142,9 @@ export default function BuildDashboard({ currentBuilds, gearOptions }: Props) {
                               onClick={() =>
                                 updateDraft(selectedBrawler.id, (draft) => ({
                                   ...draft,
-                                  gears: draft.gears.filter((selectedGear) => selectedGear.key !== gear.key),
+                                  primaryGears: draft.primaryGears.filter(
+                                    (selectedGear) => selectedGear.key !== gear.key
+                                  ),
                                 }))
                               }
                             >
@@ -1011,6 +1155,153 @@ export default function BuildDashboard({ currentBuilds, gearOptions }: Props) {
                         )
                       })
                     )}
+                  </div>
+
+                  <div className="grid gap-3 rounded-[22px] border border-slate-200 bg-slate-50 p-4">
+                    <div className="flex flex-wrap items-end justify-between gap-3">
+                      <div>
+                        <p className="m-0 text-xs font-black uppercase tracking-[0.12em] text-slate-500">
+                          Niche Gear Swaps
+                        </p>
+                        <p className="mt-1 mb-0 text-sm leading-6 text-slate-600">
+                          Add any extra gears that are still viable in specific maps or matchups.
+                        </p>
+                      </div>
+                      <Badge variant={selectedDraft.alternativeGears.length > 0 ? "secondary" : "outline"}>
+                        {selectedDraft.alternativeGears.length} selected
+                      </Badge>
+                    </div>
+
+                    <div className="grid grid-cols-[repeat(auto-fit,minmax(96px,1fr))] gap-3">
+                      {gearOptions.map((gear) => {
+                        const isPrimary = selectedDraft.primaryGears.some(
+                          (selectedGear) => selectedGear.key === gear.key
+                        )
+                        const isSelected = selectedDraft.alternativeGears.some(
+                          (selectedGear) => selectedGear.key === gear.key
+                        )
+
+                        return (
+                          <button
+                            key={gear.key}
+                            type="button"
+                            aria-pressed={isSelected}
+                            onClick={() =>
+                              updateDraft(selectedBrawler.id, (draft) => {
+                                if (draft.primaryGears.some((selectedGear) => selectedGear.key === gear.key)) {
+                                  return draft
+                                }
+
+                                const existingIndex = draft.alternativeGears.findIndex(
+                                  (selectedGear) => selectedGear.key === gear.key
+                                )
+
+                                if (existingIndex !== -1) {
+                                  return {
+                                    ...draft,
+                                    alternativeGears: draft.alternativeGears.filter(
+                                      (selectedGear) => selectedGear.key !== gear.key
+                                    ),
+                                  }
+                                }
+
+                                return {
+                                  ...draft,
+                                  alternativeGears: [
+                                    ...draft.alternativeGears,
+                                    { key: gear.key, label: gear.name },
+                                  ],
+                                }
+                              })
+                            }
+                            className={`grid justify-items-center gap-2 rounded-[22px] border px-3 py-4 text-center transition ${
+                              isPrimary
+                                ? "border-slate-200 bg-slate-100 text-slate-400"
+                                : isSelected
+                                  ? "border-sky-600 bg-sky-50 text-sky-950 shadow-[0_10px_22px_rgba(14,165,233,0.14)]"
+                                  : "border-slate-200 bg-white hover:border-sky-300 hover:bg-sky-50/50"
+                            }`}
+                          >
+                            <img
+                              src={gear.imageSrc}
+                              alt={`${gear.name} gear icon`}
+                              width={46}
+                              height={46}
+                              className="h-[46px] w-[46px] object-contain"
+                              loading="lazy"
+                            />
+                            <span className="text-xs leading-5 font-bold">{gear.name}</span>
+                          </button>
+                        )
+                      })}
+                    </div>
+
+                    <div className="grid gap-3">
+                      {selectedDraft.alternativeGears.length === 0 ? (
+                        <div className="rounded-[20px] border border-dashed border-slate-300 bg-white px-4 py-4 text-sm leading-6 text-slate-500">
+                          No niche gear swaps selected yet.
+                        </div>
+                      ) : (
+                        selectedDraft.alternativeGears.map((gear) => {
+                          const option = gearOptionByKey.get(gear.key)
+
+                          return (
+                            <div
+                              key={gear.key}
+                              className="grid gap-3 rounded-[22px] border border-slate-200 bg-white p-3 md:grid-cols-[auto_minmax(0,1fr)_auto]"
+                            >
+                              <div className="flex items-center gap-3">
+                                {option && (
+                                  <img
+                                    src={option.imageSrc}
+                                    alt={`${gear.label} icon`}
+                                    width={42}
+                                    height={42}
+                                    className="h-[42px] w-[42px] rounded-xl bg-slate-50 p-1.5 object-contain"
+                                    loading="lazy"
+                                  />
+                                )}
+                                <div>
+                                  <p className="m-0 text-xs font-black uppercase tracking-[0.12em] text-slate-500">
+                                    Niche gear
+                                  </p>
+                                  <p className="mt-1 mb-0 text-sm font-semibold text-slate-950">{gear.key}</p>
+                                </div>
+                              </div>
+                              <Input
+                                value={gear.label}
+                                onChange={(event) =>
+                                  updateDraft(selectedBrawler.id, (draft) => ({
+                                    ...draft,
+                                    alternativeGears: draft.alternativeGears.map((selectedGear) =>
+                                      selectedGear.key === gear.key
+                                        ? { ...selectedGear, label: event.target.value }
+                                        : selectedGear
+                                    ),
+                                  }))
+                                }
+                                placeholder="Label shown on the site"
+                                className="h-11 rounded-2xl bg-white"
+                              />
+                              <Button
+                                variant="ghost"
+                                onClick={() =>
+                                  updateDraft(selectedBrawler.id, (draft) => ({
+                                    ...draft,
+                                    alternativeGears: draft.alternativeGears.filter(
+                                      (selectedGear) => selectedGear.key !== gear.key
+                                    ),
+                                  }))
+                                }
+                              >
+                                <X />
+                                Remove
+                              </Button>
+                            </div>
+                          )
+                        })
+                      )}
+                    </div>
                   </div>
                 </div>
               </section>

@@ -28,16 +28,23 @@ Each brawler entry must contain these fields:
 }
 ```
 
-If a brawler has two good gadget choices depending on matchup or mode, you can add these optional fields:
+If a brawler has a clear default plus niche alternatives, you can add these optional fields:
 
 ```json
 {
   "alternativeGadgetName": "Clay Pigeons",
-  "alternativeGadgetIcon": "23000269"
+  "alternativeGadgetIcon": "23000269",
+  "alternativeStarPowers": [
+    { "name": "Band-Aid", "icon": "23000077" }
+  ],
+  "alternativeGears": [
+    { "name": "Speed", "icon": "speed" },
+    { "name": "Vision", "icon": "vision" }
+  ]
 }
 ```
 
-When those fields are present, the brawler card will show both gadgets with a `Both viable` label.
+When those fields are present, the site keeps the main gadget, star power, and 2-gear pair as the safe default, then shows the extra options as niche backups or swaps.
 
 ## Recommended manual editing
 

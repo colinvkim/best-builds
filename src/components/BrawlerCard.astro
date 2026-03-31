@@ -42,72 +42,152 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
   <dl class="build-list">
     <div class="build-row">
       <dt class="build-term">
-        <span>{brawler.gadgetChoices.length > 1 ? "Gadgets" : "Gadget"}</span>
+        <span>Gadget</span>
         {
           brawler.gadgetChoices.length > 1 && (
-            <span class="build-note">Both viable</span>
+            <span class="build-note">Default + niche</span>
           )
         }
       </dt>
-      <dd class:list={["build-detail", { "build-choice-list": brawler.gadgetChoices.length > 1 }]}>
+      <dd class="build-detail build-detail--stack">
         {
-          brawler.gadgetChoices.map((gadget, index) => (
-            <>
-              <span class:list={["build-choice", { "build-choice--multi": brawler.gadgetChoices.length > 1 }]}>
+          brawler.gadgetChoices.map((gadget, index) =>
+            index === 0 ? (
+              <span class="build-choice build-choice--primary">
+                <span class="choice-label">Safe Default</span>
+                <span class="build-choice-content">
+                  <img
+                    src={gadget.iconUrl}
+                    alt={`${gadget.name} icon`}
+                    width="48"
+                    height="48"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                  />
+                  <span class="build-copy">{gadget.name}</span>
+                </span>
+              </span>
+            ) : (
+              <span class="build-choice build-choice--secondary">
+                <span class="choice-label">Niche Pick</span>
+                <span class="build-choice-content">
+                  <img
+                    src={gadget.iconUrl}
+                    alt={`${gadget.name} icon`}
+                    width="48"
+                    height="48"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                  />
+                  <span class="build-copy">{gadget.name}</span>
+                </span>
+              </span>
+            )
+          )
+        }
+      </dd>
+    </div>
+
+    <div class="build-row">
+      <dt class="build-term">
+        <span>Star Power</span>
+        {
+          brawler.alternativeStarPowerChoices.length > 0 && (
+            <span class="build-note">Default + niche</span>
+          )
+        }
+      </dt>
+      <dd class="build-detail build-detail--stack">
+        <span class="build-choice build-choice--primary">
+          <span class="choice-label">Safe Default</span>
+          <span class="build-choice-content">
+            <img
+              src={brawler.bestStarPowerIconUrl}
+              alt={`${brawler.bestStarPowerName} icon`}
+              width="48"
+              height="48"
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+            />
+            <span class="build-copy">{brawler.bestStarPowerName}</span>
+          </span>
+        </span>
+        {
+          brawler.alternativeStarPowerChoices.map((starPower) => (
+            <span class="build-choice build-choice--secondary">
+              <span class="choice-label">Niche Pick</span>
+              <span class="build-choice-content">
                 <img
-                  src={gadget.iconUrl}
-                  alt={`${gadget.name} icon`}
+                  src={starPower.iconUrl}
+                  alt={`${starPower.name} icon`}
                   width="48"
                   height="48"
                   loading="lazy"
                   decoding="async"
                   fetchpriority="low"
                 />
-                <span class="build-copy">{gadget.name}</span>
+                <span class="build-copy">{starPower.name}</span>
               </span>
-              {
-                index < brawler.gadgetChoices.length - 1 && (
-                  <span class="build-divider" aria-hidden="true">or</span>
-                )
-              }
-            </>
+            </span>
           ))
         }
       </dd>
     </div>
 
     <div class="build-row">
-      <dt class="build-term">Star Power</dt>
-      <dd class="build-detail">
-        <img
-          src={brawler.bestStarPowerIconUrl}
-          alt={`${brawler.bestStarPowerName} icon`}
-          width="48"
-          height="48"
-          loading="lazy"
-          decoding="async"
-          fetchpriority="low"
-        />
-        <span class="build-copy">{brawler.bestStarPowerName}</span>
-      </dd>
-    </div>
-
-    <div class="build-row">
-      <dt class="build-term">Gears</dt>
-      <dd class="build-detail gear-list">
+      <dt class="build-term">
+        <span>Gears</span>
         {
-          brawler.best2Gears.map((gear, index) => (
-            <span class="gear-chip" tabindex="0" aria-label={gear}>
-              <Image
-                class="gear-icon"
-                src={brawler.best2GearsImage[index]}
-                alt={`${gear} gear icon`}
-                layout="constrained"
-                loading="lazy"
-              />
-              <span class="gear-tooltip" aria-hidden="true">{gear}</span>
-            </span>
-          ))
+          brawler.alternativeGearChoices.length > 0 && (
+            <span class="build-note">Default + flex</span>
+          )
+        }
+      </dt>
+      <dd class="build-detail build-detail--stack">
+        <div class="gear-group">
+          <span class="choice-label">Default Pair</span>
+          <div class="build-detail gear-list">
+            {
+              brawler.bestGearChoices.map((gear) => (
+                <span class="gear-chip" tabindex="0" aria-label={gear.name}>
+                  <Image
+                    class="gear-icon"
+                    src={gear.image}
+                    alt={`${gear.name} gear icon`}
+                    layout="constrained"
+                    loading="lazy"
+                  />
+                  <span class="gear-tooltip" aria-hidden="true">{gear.name}</span>
+                </span>
+              ))
+            }
+          </div>
+        </div>
+        {
+          brawler.alternativeGearChoices.length > 0 && (
+            <div class="gear-group gear-group--secondary">
+              <span class="choice-label">Niche Swaps</span>
+              <div class="build-detail gear-list">
+                {
+                  brawler.alternativeGearChoices.map((gear) => (
+                    <span class="gear-chip gear-chip--secondary" tabindex="0" aria-label={gear.name}>
+                      <Image
+                        class="gear-icon"
+                        src={gear.image}
+                        alt={`${gear.name} gear icon`}
+                        layout="constrained"
+                        loading="lazy"
+                      />
+                      <span class="gear-tooltip" aria-hidden="true">{gear.name}</span>
+                    </span>
+                  ))
+                }
+              </div>
+            </div>
+          )
         }
       </dd>
     </div>

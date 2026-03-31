@@ -19,21 +19,340 @@
     "rarity": "Starting Brawler"
   },
   {
+    "brawlerName": "Barley",
+    "bestGadgetName": "Herbal Tonic",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000293.png",
+    "bestStarPowerName": "Extra Noxious",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000158.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000006.png",
+    "rarity": "Rare",
+    "alternativeGadgetName": "Sticky Syrup Mixer",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000250.png"
+  },
+  {
+    "brawlerName": "Brock",
+    "bestGadgetName": "Rocket Fuel",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000316.png",
+    "bestStarPowerName": "More Rockets",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000079.png",
+    "best2Gears": [
+      "Reload",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "reload",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000003.png",
+    "rarity": "Rare",
+    "alternativeGadgetName": "Rocket Laces",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000245.png",
+    "alternativeStarPowers": [
+      {
+        "name": "Rocket No. 4",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000150.png"
+      }
+    ]
+  },
+  {
     "brawlerName": "Bull",
     "bestGadgetName": "Stomper",
     "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000310.png",
     "bestStarPowerName": "Tough Guy",
     "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000137.png",
     "best2Gears": [
+      "Shield",
+      "Health"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "health"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000002.png",
+    "rarity": "Rare",
+    "alternativeGadgetName": "T-Bone Missile",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000272.png",
+    "alternativeGears": [
+      {
+        "name": "Damage",
+        "icon": "damage"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Colt",
+    "bestGadgetName": "Speedloader",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000273.png",
+    "bestStarPowerName": "Slick Boots",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000077.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000001.png",
+    "rarity": "Rare",
+    "alternativeGadgetName": "Silver Bullet",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000319.png"
+  },
+  {
+    "brawlerName": "El Primo",
+    "bestGadgetName": "Suplex Supplement",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000264.png",
+    "bestStarPowerName": "El Fuego",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000086.png",
+    "best2Gears": [
       "Damage",
-      "Shield"
+      "Super Charge"
     ],
     "best2GearsIcon": [
       "damage",
-      "shield"
+      "super"
     ],
-    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000002.png",
-    "rarity": "Rare"
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000010.png",
+    "rarity": "Rare",
+    "alternativeStarPowers": [
+      {
+        "name": "Meteor Rush",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000140.png"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Nita",
+    "bestGadgetName": "Faux Fur",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000314.png",
+    "bestStarPowerName": "Bear With Me",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000084.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000008.png",
+    "rarity": "Rare",
+    "alternativeGadgetName": "Bear Paws",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000249.png",
+    "alternativeStarPowers": [
+      {
+        "name": "Hyper Bear",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000136.png"
+      }
+    ],
+    "alternativeGears": [
+      {
+        "name": "Speed",
+        "icon": "speed"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Poco",
+    "bestGadgetName": "Protective Tunes",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000350.png",
+    "bestStarPowerName": "Screeching Solo",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000144.png",
+    "best2Gears": [
+      "Shield",
+      "Health"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "health"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000013.png",
+    "rarity": "Rare",
+    "alternativeGadgetName": "Tuning Fork",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000267.png",
+    "alternativeStarPowers": [
+      {
+        "name": "Da Capo",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000089.png"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Rosa",
+    "bestGadgetName": "Grow Light",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000242.png",
+    "bestStarPowerName": "Thorny Gloves",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000147.png",
+    "best2Gears": [
+      "Speed",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "speed",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000024.png",
+    "rarity": "Rare",
+    "alternativeGadgetName": "Unfriendly Bushes",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000348.png"
+  },
+  {
+    "brawlerName": "8-Bit",
+    "bestGadgetName": "Cheat Cartridge",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000259.png",
+    "bestStarPowerName": "Boosted Booster",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000168.png",
+    "best2Gears": [
+      "Reload",
+      "Health"
+    ],
+    "best2GearsIcon": [
+      "reload",
+      "health"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000027.png",
+    "rarity": "Super Rare",
+    "alternativeGadgetName": "Extra Credits",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000318.png",
+    "alternativeStarPowers": [
+      {
+        "name": "Plugged In",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000181.png"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Carl",
+    "bestGadgetName": "Heat Ejector",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000262.png",
+    "bestStarPowerName": "Protective Pirouette",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000145.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000025.png",
+    "rarity": "Super Rare",
+    "alternativeGadgetName": "Flying Hook",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000317.png",
+    "alternativeGears": [
+      {
+        "name": "Health",
+        "icon": "health"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Darryl",
+    "bestGadgetName": "Recoiling Rotator",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000260.png",
+    "bestStarPowerName": "Steel Hoops",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000094.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000018.png",
+    "rarity": "Super Rare",
+    "alternativeGadgetName": "Tar Barrel",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000313.png"
+  },
+  {
+    "brawlerName": "Dynamike",
+    "bestGadgetName": "Satchel Charge",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000294.png",
+    "bestStarPowerName": "Demolition",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000155.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000009.png",
+    "rarity": "Super Rare",
+    "alternativeGadgetName": "Fidget Spinner",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000258.png",
+    "alternativeStarPowers": [
+      {
+        "name": "Dyna-Jump",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000085.png"
+      }
+    ],
+    "alternativeGears": [
+      {
+        "name": "Gadget Charge",
+        "icon": "gadget"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Gus",
+    "bestGadgetName": "Kooky Popper",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000513.png",
+    "bestStarPowerName": "Spirit Animal",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000512.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000061.png",
+    "rarity": "Super Rare",
+    "alternativeGears": [
+      {
+        "name": "Health",
+        "icon": "health"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Jacky",
+    "bestGadgetName": "Pneumatic Booster",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000256.png",
+    "bestStarPowerName": "Counter Crush",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000222.png",
+    "best2Gears": [
+      "Damage",
+      "Super Charge"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "super"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000034.png",
+    "rarity": "Super Rare",
+    "alternativeGears": [
+      {
+        "name": "Speed",
+        "icon": "speed"
+      },
+      {
+        "name": "Gadget Charge",
+        "icon": "gadget"
+      }
+    ]
   },
   {
     "brawlerName": "Jessie",
@@ -50,6 +369,73 @@
       "shield"
     ],
     "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000007.png",
+    "rarity": "Super Rare",
+    "alternativeGadgetName": "Recoil Spring",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000295.png"
+  },
+  {
+    "brawlerName": "Penny",
+    "bestGadgetName": "Salty Barrel",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000248.png",
+    "bestStarPowerName": "Heavy Coffers",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000099.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000019.png",
+    "rarity": "Super Rare",
+    "alternativeStarPowers": [
+      {
+        "name": "Master Blaster",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000142.png"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Rico",
+    "bestGadgetName": "Multiball Launcher",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000246.png",
+    "bestStarPowerName": "Super Bouncy",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000080.png",
+    "best2Gears": [
+      "Reload",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "reload",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000004.png",
+    "rarity": "Super Rare",
+    "alternativeGadgetName": "Bouncy Castle",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000409.png",
+    "alternativeStarPowers": [
+      {
+        "name": "Robo Retreat",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000156.png"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Tick",
+    "bestGadgetName": "Last Hurrah",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000355.png",
+    "bestStarPowerName": "Well Oiled",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000114.png",
+    "best2Gears": [
+      "Shield",
+      "Tick"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "tick"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000022.png",
     "rarity": "Super Rare"
   },
   {
@@ -72,6 +458,67 @@
     "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000677.png"
   },
   {
+    "brawlerName": "Ash",
+    "bestGadgetName": "Chill Pill",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000416.png",
+    "bestStarPowerName": "First Bash",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000414.png",
+    "best2Gears": [
+      "Speed",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "speed",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000051.png",
+    "rarity": "Epic"
+  },
+  {
+    "brawlerName": "Bea",
+    "bestGadgetName": "Rattled Hive",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000312.png",
+    "bestStarPowerName": "Honeycomb",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000193.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000029.png",
+    "rarity": "Epic",
+    "alternativeGadgetName": "Honey Molasses",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000271.png"
+  },
+  {
+    "brawlerName": "Belle",
+    "bestGadgetName": "Nest Egg",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000371.png",
+    "bestStarPowerName": "Positive Feedback",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000369.png",
+    "best2Gears": [
+      "Reload",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "reload",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000046.png",
+    "rarity": "Epic",
+    "alternativeGadgetName": "Reverse Polarity",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000463.png",
+    "alternativeStarPowers": [
+      {
+        "name": "Grounded",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000370.png"
+      }
+    ]
+  },
+  {
     "brawlerName": "Berry",
     "bestGadgetName": "Friendship Is Great",
     "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000766.png",
@@ -88,7 +535,356 @@
     "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000082.png",
     "rarity": "Epic",
     "alternativeGadgetName": "Healthy Additives",
-    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000767.png"
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000767.png",
+    "alternativeStarPowers": [
+      {
+        "name": "Making A Mess",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000765.png"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Bibi",
+    "bestGadgetName": "Vitamin Booster",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000275.png",
+    "bestStarPowerName": "Home Run",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000134.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000026.png",
+    "rarity": "Epic",
+    "alternativeGears": [
+      {
+        "name": "Health",
+        "icon": "health"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Bo",
+    "bestGadgetName": "Super Totem",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000263.png",
+    "bestStarPowerName": "Snare A Bear",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000148.png",
+    "best2Gears": [
+      "Shield",
+      "Health"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "health"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000014.png",
+    "rarity": "Epic",
+    "alternativeGadgetName": "Tripwire",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000289.png",
+    "alternativeGears": [
+      {
+        "name": "Damage",
+        "icon": "damage"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Bonnie",
+    "bestGadgetName": "Sugar Rush",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000480.png",
+    "bestStarPowerName": "Black Powder",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000478.png",
+    "best2Gears": [
+      "Super Charge",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "super",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000058.png",
+    "rarity": "Epic",
+    "alternativeGears": [
+      {
+        "name": "Health",
+        "icon": "health"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Colette",
+    "bestGadgetName": "Gotcha",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000457.png",
+    "bestStarPowerName": "Mass Tax",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000301.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000039.png",
+    "rarity": "Epic"
+  },
+  {
+    "brawlerName": "Edgar",
+    "bestGadgetName": "Lets Fly",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000340.png",
+    "bestStarPowerName": "Fisticuffs",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000339.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000043.png",
+    "rarity": "Epic",
+    "alternativeGadgetName": "Hardcore",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000403.png",
+    "alternativeStarPowers": [
+      {
+        "name": "Hard Landing",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000338.png"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Emz",
+    "bestGadgetName": "Acid Spray",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000459.png",
+    "bestStarPowerName": "Hype",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000199.png",
+    "best2Gears": [
+      "Damage",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000030.png",
+    "rarity": "Epic",
+    "alternativeGadgetName": "Friendzoner",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000274.png",
+    "alternativeGears": [
+      {
+        "name": "Speed",
+        "icon": "speed"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Frank",
+    "bestGadgetName": "Irresistible Attraction",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000351.png",
+    "bestStarPowerName": "Sponge",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000153.png",
+    "best2Gears": [
+      "Health",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "health",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000020.png",
+    "rarity": "Epic",
+    "alternativeGadgetName": "Active Noise Canceling",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000261.png",
+    "alternativeStarPowers": [
+      {
+        "name": "Power Grab",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000104.png"
+      }
+    ],
+    "alternativeGears": [
+      {
+        "name": "Shield",
+        "icon": "shield"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Gale",
+    "bestGadgetName": "Twister",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000407.png",
+    "bestStarPowerName": "Blustery Blow",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000228.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000035.png",
+    "rarity": "Epic",
+    "alternativeStarPowers": [
+      {
+        "name": "Freezing Snow",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000229.png"
+      }
+    ],
+    "alternativeGears": [
+      {
+        "name": "Speed",
+        "icon": "speed"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Griff",
+    "bestGadgetName": "Piggy Bank",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000399.png",
+    "bestStarPowerName": "Business Resilience",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000398.png",
+    "best2Gears": [
+      "Reload",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "reload",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000050.png",
+    "rarity": "Epic",
+    "alternativeStarPowers": [
+      {
+        "name": "Keep The Change",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000397.png"
+      }
+    ],
+    "alternativeGears": [
+      {
+        "name": "Health",
+        "icon": "health"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Grom",
+    "bestGadgetName": "Radio Check",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000460.png",
+    "bestStarPowerName": "X-Factor",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000384.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000048.png",
+    "rarity": "Epic",
+    "alternativeGadgetName": "Watchtower",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000385.png"
+  },
+  {
+    "brawlerName": "Hank",
+    "bestGadgetName": "Barricade",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000580.png",
+    "bestStarPowerName": "Its Gonna Blow",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000577.png",
+    "best2Gears": [
+      "Damage",
+      "Health"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "health"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000069.png",
+    "rarity": "Epic",
+    "alternativeGadgetName": "Water Balloons",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000579.png"
+  },
+  {
+    "brawlerName": "Larry & Lawrie",
+    "bestGadgetName": "Order Fall Back",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000662.png",
+    "bestStarPowerName": "Protocol Assist",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000660.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000077.png",
+    "rarity": "Epic"
+  },
+  {
+    "brawlerName": "Lola",
+    "bestGadgetName": "Stunt Double",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000456.png",
+    "bestStarPowerName": "Sealed With A Kiss",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000432.png",
+    "best2Gears": [
+      "Damage",
+      "Reload"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "reload"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000053.png",
+    "rarity": "Epic",
+    "alternativeGadgetName": "Freeze Frame",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000433.png",
+    "alternativeGears": [
+      {
+        "name": "Vision",
+        "icon": "vision"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Maisie",
+    "bestGadgetName": "Disengage",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000571.png",
+    "bestStarPowerName": "Tremors",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000570.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000068.png",
+    "rarity": "Epic"
+  },
+  {
+    "brawlerName": "Mandy",
+    "bestGadgetName": "Cookie Crumbs",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000546.png",
+    "bestStarPowerName": "In My Sights",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000543.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000065.png",
+    "rarity": "Epic",
+    "alternativeGadgetName": "Caramelize",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000545.png"
   },
   {
     "brawlerName": "Meeple",
@@ -107,14 +903,116 @@
     "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000089.png",
     "rarity": "Epic",
     "alternativeGadgetName": "Ragequit",
-    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000878.png"
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000878.png",
+    "alternativeStarPowers": [
+      {
+        "name": "Rule Bending",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000876.png"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Nani",
+    "bestGadgetName": "Return To Sender",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000353.png",
+    "bestStarPowerName": "Tempered Steel",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000235.png",
+    "best2Gears": [
+      "Shield",
+      "Super Charge"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "super"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000036.png",
+    "rarity": "Epic",
+    "alternativeGadgetName": "Warpin Time",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000278.png",
+    "alternativeStarPowers": [
+      {
+        "name": "Autofocus",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000234.png"
+      }
+    ],
+    "alternativeGears": [
+      {
+        "name": "Health",
+        "icon": "health"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Pam",
+    "bestGadgetName": "Scrapsucker",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000404.png",
+    "bestStarPowerName": "Mamas Squeeze",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000139.png",
+    "best2Gears": [
+      "Health",
+      "Super Turret"
+    ],
+    "best2GearsIcon": [
+      "health",
+      "pam"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000016.png",
+    "rarity": "Epic"
+  },
+  {
+    "brawlerName": "Pearl",
+    "bestGadgetName": "Overcooked",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000603.png",
+    "bestStarPowerName": "Heat Shield",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000602.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000072.png",
+    "rarity": "Epic",
+    "alternativeGears": [
+      {
+        "name": "Health",
+        "icon": "health"
+      }
+    ]
   },
   {
     "brawlerName": "Piper",
-    "bestGadgetName": "Auto Aimer",
-    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000268.png",
-    "bestStarPowerName": "Ambush",
-    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000091.png",
+    "bestGadgetName": "Homemade Recipe",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000291.png",
+    "bestStarPowerName": "Snappy Sniping",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000152.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000015.png",
+    "rarity": "Epic",
+    "alternativeGadgetName": "Auto Aimer",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000268.png",
+    "alternativeGears": [
+      {
+        "name": "Health",
+        "icon": "health"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Sam",
+    "bestGadgetName": "Magnetic Field",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000505.png",
+    "bestStarPowerName": "Hearty Recovery",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000503.png",
     "best2Gears": [
       "Damage",
       "Shield"
@@ -123,7 +1021,7 @@
       "damage",
       "shield"
     ],
-    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000015.png",
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000060.png",
     "rarity": "Epic"
   },
   {
@@ -144,6 +1042,25 @@
     "rarity": "Epic"
   },
   {
+    "brawlerName": "Stu",
+    "bestGadgetName": "Breakthrough",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000401.png",
+    "bestStarPowerName": "Gaso-Heal",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000363.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000045.png",
+    "rarity": "Epic",
+    "alternativeGadgetName": "Speed Zone",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000364.png"
+  },
+  {
     "brawlerName": "Trunk",
     "bestGadgetName": "Worker Ants",
     "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23001001.png",
@@ -158,7 +1075,597 @@
       "shield"
     ],
     "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000096.png",
-    "rarity": "Epic"
+    "rarity": "Epic",
+    "alternativeGears": [
+      {
+        "name": "Speed",
+        "icon": "speed"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Alli",
+    "bestGadgetName": "Cold-Blooded",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000992.png",
+    "bestStarPowerName": "You Better Run You Better Take Cover",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000990.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000095.png",
+    "rarity": "Mythic"
+  },
+  {
+    "brawlerName": "Buster",
+    "bestGadgetName": "Slo-Mo Replay",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000522.png",
+    "bestStarPowerName": "Kevlar Vest",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000520.png",
+    "best2Gears": [
+      "Speed",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "speed",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000062.png",
+    "rarity": "Mythic",
+    "alternativeGears": [
+      {
+        "name": "Health",
+        "icon": "health"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Buzz",
+    "bestGadgetName": "Reserve Buoy",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000392.png",
+    "bestStarPowerName": "Tougher Torpedo",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000390.png",
+    "best2Gears": [
+      "Damage",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000049.png",
+    "rarity": "Mythic",
+    "alternativeGadgetName": "X-Ray-Shades",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000490.png",
+    "alternativeStarPowers": [
+      {
+        "name": "Eyes Sharp",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000391.png"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Byron",
+    "bestGadgetName": "Booster Shots",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000461.png",
+    "bestStarPowerName": "Malaise",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000331.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000042.png",
+    "rarity": "Mythic",
+    "alternativeStarPowers": [
+      {
+        "name": "Injection",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000332.png"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Charlie",
+    "bestGadgetName": "Spiders",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000625.png",
+    "bestStarPowerName": "Slimy",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000624.png",
+    "best2Gears": [
+      "Damage",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000074.png",
+    "rarity": "Mythic",
+    "alternativeGadgetName": "Personal Space",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000626.png"
+  },
+  {
+    "brawlerName": "Chuck",
+    "bestGadgetName": "Rerouting",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000611.png",
+    "bestStarPowerName": "Tickets Please",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000610.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000073.png",
+    "rarity": "Mythic",
+    "alternativeStarPowers": [
+      {
+        "name": "Pit Stop",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000609.png"
+      }
+    ],
+    "alternativeGears": [
+      {
+        "name": "Health",
+        "icon": "health"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Clancy",
+    "bestGadgetName": "Snappy Shooting",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000774.png",
+    "bestStarPowerName": "Recon",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000772.png",
+    "best2Gears": [
+      "Damage",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000083.png",
+    "rarity": "Mythic",
+    "alternativeGadgetName": "Tactical Retreat",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000775.png",
+    "alternativeStarPowers": [
+      {
+        "name": "Pumping Up",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000773.png"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Doug",
+    "bestGadgetName": "Extra Mustard",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000596.png",
+    "bestStarPowerName": "Self Service",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000594.png",
+    "best2Gears": [
+      "Damage",
+      "Speed"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "speed"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000071.png",
+    "rarity": "Mythic",
+    "alternativeGadgetName": "Double Sausage",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000595.png"
+  },
+  {
+    "brawlerName": "Eve",
+    "bestGadgetName": "Gotta Go",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000454.png",
+    "bestStarPowerName": "Unnatural Order",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000452.png",
+    "best2Gears": [
+      "Reload",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "reload",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000056.png",
+    "rarity": "Mythic",
+    "alternativeGears": [
+      {
+        "name": "Quadruplets",
+        "icon": "eve"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Fang",
+    "bestGadgetName": "Roundhouse Kick",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000464.png",
+    "bestStarPowerName": "Divine Soles",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000439.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000054.png",
+    "rarity": "Mythic",
+    "alternativeGadgetName": "Corn-Fu",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000440.png",
+    "alternativeStarPowers": [
+      {
+        "name": "Fresh Kicks",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000438.png"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Finx",
+    "bestGadgetName": "Back To The Finxture",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000917.png",
+    "bestStarPowerName": "Hieroglyph Halt",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000915.png",
+    "best2Gears": [
+      "Damage",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000092.png",
+    "rarity": "Mythic",
+    "alternativeGears": [
+      {
+        "name": "Health",
+        "icon": "health"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Gene",
+    "bestGadgetName": "Vengeful Spirits",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000352.png",
+    "bestStarPowerName": "Magic Puffs",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000109.png",
+    "best2Gears": [
+      "Shield",
+      "Talk to the Hand"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "gene"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000021.png",
+    "rarity": "Mythic",
+    "alternativeGadgetName": "Lamp Blowout",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000252.png",
+    "alternativeStarPowers": [
+      {
+        "name": "Spirit Slap",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000159.png"
+      }
+    ],
+    "alternativeGears": [
+      {
+        "name": "Vision",
+        "icon": "vision"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Gigi",
+    "bestGadgetName": "Longer Strings",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23001070.png",
+    "bestStarPowerName": "A Helping Hand",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23001069.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000100.png",
+    "rarity": "Mythic"
+  },
+  {
+    "brawlerName": "Glowbert",
+    "bestGadgetName": "Slippery Savior",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23001183.png",
+    "bestStarPowerName": "Parasitism",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23001182.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000101.png",
+    "rarity": "Mythic",
+    "alternativeGadgetName": "More Lumens",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23001184.png"
+  },
+  {
+    "brawlerName": "Gray",
+    "bestGadgetName": "Walking Cane",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000537.png",
+    "bestStarPowerName": "New Perspective",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000536.png",
+    "best2Gears": [
+      "Shield",
+      "Gadget Charge"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "gadget"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000064.png",
+    "rarity": "Mythic",
+    "alternativeStarPowers": [
+      {
+        "name": "Fake Injury",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000535.png"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Jae-Yong",
+    "bestGadgetName": "Weekend Warrior",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000931.png",
+    "bestStarPowerName": "The Crowd Goes Mild",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000929.png",
+    "best2Gears": [
+      "Health",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "health",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000093.png",
+    "rarity": "Mythic",
+    "alternativeGears": [
+      {
+        "name": "Damage",
+        "icon": "damage"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Janet",
+    "bestGadgetName": "Backstage Pass",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000473.png",
+    "bestStarPowerName": "Vocal Warm Up",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000471.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000057.png",
+    "rarity": "Mythic",
+    "alternativeGadgetName": "Drop The Bass",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000472.png",
+    "alternativeGears": [
+      {
+        "name": "Vision",
+        "icon": "vision"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Juju",
+    "bestGadgetName": "Elementalist",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000851.png",
+    "bestStarPowerName": "Guarded Gris-Gris",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000848.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000087.png",
+    "rarity": "Mythic",
+    "alternativeGadgetName": "Voodoo Chile",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000850.png",
+    "alternativeStarPowers": [
+      {
+        "name": "Numbing Needles",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000849.png"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Lily",
+    "bestGadgetName": "Vanish",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000754.png",
+    "bestStarPowerName": "Vigilance",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000753.png",
+    "best2Gears": [
+      "Damage",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000081.png",
+    "rarity": "Mythic"
+  },
+  {
+    "brawlerName": "Lou",
+    "bestGadgetName": "Cryo Syrup",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000400.png",
+    "bestStarPowerName": "Hypothermia",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000325.png",
+    "best2Gears": [
+      "Shield",
+      "Super Charge"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "super"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000041.png",
+    "rarity": "Mythic",
+    "alternativeGadgetName": "Ice Block",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000326.png",
+    "alternativeGears": [
+      {
+        "name": "Damage",
+        "icon": "damage"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Lumi",
+    "bestGadgetName": "Grim And Frostbitten",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000908.png",
+    "bestStarPowerName": "Half-Time",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000906.png",
+    "best2Gears": [
+      "Damage",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000091.png",
+    "rarity": "Mythic"
+  },
+  {
+    "brawlerName": "Max",
+    "bestGadgetName": "Phase Shifter",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000254.png",
+    "bestStarPowerName": "Run N Gun",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000211.png",
+    "best2Gears": [
+      "Health",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "health",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000032.png",
+    "rarity": "Mythic"
+  },
+  {
+    "brawlerName": "Melodie",
+    "bestGadgetName": "Interlude",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000670.png",
+    "bestStarPowerName": "Fast Beats",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000667.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000078.png",
+    "rarity": "Mythic",
+    "alternativeGears": [
+      {
+        "name": "Health",
+        "icon": "health"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Mico",
+    "bestGadgetName": "Clipping Scream",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000639.png",
+    "bestStarPowerName": "Monkey Business",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000637.png",
+    "best2Gears": [
+      "Damage",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000075.png",
+    "rarity": "Mythic",
+    "alternativeStarPowers": [
+      {
+        "name": "Record Smash",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000638.png"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Mina",
+    "bestGadgetName": "Windmill",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23001041.png",
+    "bestStarPowerName": "Zum Zum Zum",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23001039.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000097.png",
+    "rarity": "Mythic",
+    "alternativeGadgetName": "Capo-What?",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23001042.png",
+    "alternativeStarPowers": [
+      {
+        "name": "Blown Away",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23001040.png"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Moe",
+    "bestGadgetName": "Dodgy Digging",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000806.png",
+    "bestStarPowerName": "Skipping Stones",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000804.png",
+    "best2Gears": [
+      "Damage",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000084.png",
+    "rarity": "Mythic",
+    "alternativeStarPowers": [
+      {
+        "name": "Speeding Ticket",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000805.png"
+      }
+    ]
   },
   {
     "brawlerName": "Mortis",
@@ -180,6 +1687,176 @@
     "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000265.png"
   },
   {
+    "brawlerName": "Mr. P",
+    "bestGadgetName": "Porter Reinforcements",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000349.png",
+    "bestStarPowerName": "Revolving Door",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000205.png",
+    "best2Gears": [
+      "Damage",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000031.png",
+    "rarity": "Mythic"
+  },
+  {
+    "brawlerName": "Najia",
+    "bestGadgetName": "Poison Puddles",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23001218.png",
+    "bestStarPowerName": "Venomous",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23001217.png",
+    "best2Gears": [
+      "Damage",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000103.png",
+    "rarity": "Mythic"
+  },
+  {
+    "brawlerName": "Ollie",
+    "bestGadgetName": "All Eyez On Me",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000886.png",
+    "bestStarPowerName": "Renegade",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000884.png",
+    "best2Gears": [
+      "Damage",
+      "Health"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "health"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000090.png",
+    "rarity": "Mythic",
+    "alternativeGadgetName": "Regulate",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000885.png",
+    "alternativeStarPowers": [
+      {
+        "name": "Kick Push",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000883.png"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Otis",
+    "bestGadgetName": "Phat Splatter",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000498.png",
+    "bestStarPowerName": "Ink Refills",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000496.png",
+    "best2Gears": [
+      "Super Charge",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "super",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000059.png",
+    "rarity": "Mythic",
+    "alternativeGears": [
+      {
+        "name": "Vision",
+        "icon": "vision"
+      },
+      {
+        "name": "Shield",
+        "icon": "shield"
+      }
+    ]
+  },
+  {
+    "brawlerName": "R-T",
+    "bestGadgetName": "Out Of Line",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000555.png",
+    "bestStarPowerName": "Recording",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000554.png",
+    "best2Gears": [
+      "Shield",
+      "Health"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "health"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000066.png",
+    "rarity": "Mythic"
+  },
+  {
+    "brawlerName": "Ruffs",
+    "bestGadgetName": "Air Support",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000402.png",
+    "bestStarPowerName": "Air Superiority",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000345.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000044.png",
+    "rarity": "Mythic",
+    "alternativeGadgetName": "Take Cover",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000347.png",
+    "alternativeStarPowers": [
+      {
+        "name": "Field Promotion",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000346.png"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Sprout",
+    "bestGadgetName": "Transplant",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000315.png",
+    "bestStarPowerName": "Overgrowth",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000240.png",
+    "best2Gears": [
+      "Super Charge",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "super",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000037.png",
+    "rarity": "Mythic"
+  },
+  {
+    "brawlerName": "Squeak",
+    "bestGadgetName": "Windup",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000378.png",
+    "bestStarPowerName": "Super Sticky",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000377.png",
+    "best2Gears": [
+      "Shield",
+      "Health"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "health"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000047.png",
+    "rarity": "Mythic",
+    "alternativeGadgetName": "Residue",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000462.png",
+    "alternativeStarPowers": [
+      {
+        "name": "Chain Reaction",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000376.png"
+      }
+    ]
+  },
+  {
     "brawlerName": "Tara",
     "bestGadgetName": "Support From Beyond",
     "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000356.png",
@@ -197,5 +1874,390 @@
     "rarity": "Mythic",
     "alternativeGadgetName": "Psychic Enhancer",
     "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000266.png"
+  },
+  {
+    "brawlerName": "Willow",
+    "bestGadgetName": "Dive",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000564.png",
+    "bestStarPowerName": "Obsession",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000562.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000067.png",
+    "rarity": "Mythic",
+    "alternativeStarPowers": [
+      {
+        "name": "Love Is Blind",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000561.png"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Ziggy",
+    "bestGadgetName": "Electric Shuffle",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23001049.png",
+    "bestStarPowerName": "Thunderstruck",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23001047.png",
+    "best2Gears": [
+      "Damage",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000098.png",
+    "rarity": "Mythic",
+    "alternativeStarPowers": [
+      {
+        "name": "The Great Ziggini",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23001048.png"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Amber",
+    "bestGadgetName": "Fire Starters",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000309.png",
+    "bestStarPowerName": "Wild Flames",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000307.png",
+    "best2Gears": [
+      "Reload",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "reload",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000040.png",
+    "rarity": "Legendary",
+    "alternativeGadgetName": "Dancing Flames",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000488.png",
+    "alternativeStarPowers": [
+      {
+        "name": "Scorchin Siphon",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000308.png"
+      }
+    ],
+    "alternativeGears": [
+      {
+        "name": "Damage",
+        "icon": "damage"
+      },
+      {
+        "name": "Vision",
+        "icon": "vision"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Chester",
+    "bestGadgetName": "Candy Beans",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000530.png",
+    "bestStarPowerName": "Single Bellomania",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000527.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000063.png",
+    "rarity": "Legendary"
+  },
+  {
+    "brawlerName": "Cordelius",
+    "bestGadgetName": "Replanting",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000587.png",
+    "bestStarPowerName": "Comboshrooms",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000585.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000070.png",
+    "rarity": "Legendary",
+    "alternativeGadgetName": "Poison Mushroom",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000588.png"
+  },
+  {
+    "brawlerName": "Crow",
+    "bestGadgetName": "Instapoison",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000243.png",
+    "bestStarPowerName": "Carrion Crow",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000143.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000012.png",
+    "rarity": "Legendary"
+  },
+  {
+    "brawlerName": "Draco",
+    "bestGadgetName": "Last Stand",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000737.png",
+    "bestStarPowerName": "Shredding",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000735.png",
+    "best2Gears": [
+      "Shield",
+      "Health"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "health"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000080.png",
+    "rarity": "Legendary",
+    "alternativeStarPowers": [
+      {
+        "name": "Expose",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000734.png"
+      }
+    ],
+    "alternativeGears": [
+      {
+        "name": "Damage",
+        "icon": "damage"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Kenji",
+    "bestGadgetName": "Hosomaki Healing",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000818.png",
+    "bestStarPowerName": "Nigiri Nemesis",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000816.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000085.png",
+    "rarity": "Legendary"
+  },
+  {
+    "brawlerName": "Kit",
+    "bestGadgetName": "Cardboard Box",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000648.png",
+    "bestStarPowerName": "Overly Attached",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000647.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000076.png",
+    "rarity": "Legendary",
+    "alternativeGadgetName": "Cheeseburger",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000649.png",
+    "alternativeStarPowers": [
+      {
+        "name": "Power Hungry",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000646.png"
+      }
+    ],
+    "alternativeGears": [
+      {
+        "name": "Health",
+        "icon": "health"
+      },
+      {
+        "name": "Gadget Cooldown",
+        "icon": "gadget"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Leon",
+    "bestGadgetName": "Lollipop Drop",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000408.png",
+    "bestStarPowerName": "Smoke Trails",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000119.png",
+    "best2Gears": [
+      "Damage",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000023.png",
+    "rarity": "Legendary",
+    "alternativeGadgetName": "Clone Projector",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000276.png"
+  },
+  {
+    "brawlerName": "Meg",
+    "bestGadgetName": "Jolting Volts",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000423.png",
+    "bestStarPowerName": "Heavy Metal",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000422.png",
+    "best2Gears": [
+      "Shield",
+      "Health"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "health"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000052.png",
+    "rarity": "Legendary",
+    "alternativeGears": [
+      {
+        "name": "Damage",
+        "icon": "damage"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Pierce",
+    "bestGadgetName": "Bottomless Mags",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23001062.png",
+    "bestStarPowerName": "Mission Swimpossible",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23001060.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000099.png",
+    "rarity": "Legendary",
+    "alternativeGadgetName": "You Only Brawl Twice",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23001063.png"
+  },
+  {
+    "brawlerName": "Sandy",
+    "bestGadgetName": "Sweet Dreams",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000405.png",
+    "bestStarPowerName": "Rude Sands",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000186.png",
+    "best2Gears": [
+      "Shield",
+      "Speed"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "speed"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000028.png",
+    "rarity": "Legendary",
+    "alternativeGears": [
+      {
+        "name": "Damage",
+        "icon": "damage"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Spike",
+    "bestGadgetName": "Life Plant",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000406.png",
+    "bestStarPowerName": "Curveball",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000151.png",
+    "best2Gears": [
+      "Damage",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000005.png",
+    "rarity": "Legendary",
+    "alternativeGadgetName": "Popping Pincushion",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000247.png",
+    "alternativeGears": [
+      {
+        "name": "Vision",
+        "icon": "vision"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Surge",
+    "bestGadgetName": "Power Surge",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000285.png",
+    "bestStarPowerName": "Serve Ice Cold",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000284.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000038.png",
+    "rarity": "Legendary",
+    "alternativeGadgetName": "Power Shield",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000485.png",
+    "alternativeStarPowers": [
+      {
+        "name": "To The Max",
+        "icon": "https://cdn.brawlify.com/star-powers/borderless/23000283.png"
+      }
+    ]
+  },
+  {
+    "brawlerName": "Kaze",
+    "bestGadgetName": "Hensojutsu",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000941.png",
+    "bestStarPowerName": "Gratuity Included",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000939.png",
+    "best2Gears": [
+      "Damage",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000094.png",
+    "rarity": "Ultra Legendary",
+    "alternativeGadgetName": "Gracious Host",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000940.png"
+  },
+  {
+    "brawlerName": "Sirius",
+    "bestGadgetName": "A Starr Is Born",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23001191.png",
+    "bestStarPowerName": "The Darkest Starr",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23001190.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000102.png",
+    "rarity": "Ultra Legendary"
   }
 ]
