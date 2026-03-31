@@ -1,13 +1,12 @@
 ---
-import { Image } from "astro:assets";
 import { RARITY_STYLES, type Brawler } from "../lib/brawlers";
-import { Badge } from "@/components/ui/badge";
 
 type Props = {
   brawler: Brawler;
+  eager?: boolean;
 };
 
-const { brawler } = Astro.props;
+const { brawler, eager = false } = Astro.props;
 const rarityStyle = RARITY_STYLES[brawler.rarity];
 ---
 
@@ -25,150 +24,137 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
       alt={`${brawler.brawlerName} icon`}
       width="96"
       height="96"
-      loading="lazy"
+      loading={eager ? "eager" : "lazy"}
       decoding="async"
-      fetchpriority="low"
+      fetchpriority={eager ? "high" : "low"}
     />
 
     <div class="title-wrap">
       <p class="eyebrow">Best Build</p>
       <h2 class="card-title">{brawler.brawlerName}</h2>
-      <Badge
-        style={{
-          backgroundColor: rarityStyle.color,
-          color: rarityStyle.textColor,
-        }}
+      <span
+        class="rarity-pill"
+        style={`--rarity-bg:${rarityStyle.color};--rarity-text:${rarityStyle.textColor};`}
       >
         {brawler.rarity}
-      </Badge>
+      </span>
     </div>
   </header>
 
-  <dl class="build-list">
-    <div class="build-row">
-      <dt class="build-term">
-        <span>Gadget</span>
+  <div class="build-list">
+    <section class="build-row" aria-label="Gadget choices">
+      <div class="build-label">
+        <span class="build-term">Gadget</span>
         {
           brawler.gadgetChoices.length > 1 && (
             <span class="build-note">Default + niche</span>
           )
         }
-      </dt>
-      <dd class="build-detail build-detail--stack">
-        {
-          brawler.gadgetChoices.map((gadget, index) =>
-            index === 0 ? (
-              <span class="build-choice build-choice--primary">
-                {brawler.gadgetChoices.length > 1 && (
-                  <span class="choice-label">Safe Default</span>
-                )}
-                <span class="build-choice-content">
-                  <img
-                    src={gadget.iconUrl}
-                    alt={`${gadget.name} icon`}
-                    width="48"
-                    height="48"
-                    loading="lazy"
-                    decoding="async"
-                    fetchpriority="low"
-                  />
-                  <span class="build-copy">{gadget.name}</span>
-                </span>
+      </div>
+      <div class="choice-list">
+        {brawler.gadgetChoices.map((gadget, index) => (
+          <div class:list={[
+            "build-choice",
+            index === 0 ? "build-choice--primary" : null,
+          ]}>
+            {brawler.gadgetChoices.length > 1 && (
+              <span class="choice-label">
+                {index === 0 ? "Safe Default" : "Niche Pick"}
               </span>
-            ) : (
-              <span class="build-choice build-choice--secondary">
-                <span class="choice-label">Niche Pick</span>
-                <span class="build-choice-content">
-                  <img
-                    src={gadget.iconUrl}
-                    alt={`${gadget.name} icon`}
-                    width="48"
-                    height="48"
-                    loading="lazy"
-                    decoding="async"
-                    fetchpriority="low"
-                  />
-                  <span class="build-copy">{gadget.name}</span>
-                </span>
-              </span>
-            ),
-          )
-        }
-      </dd>
-    </div>
+            )}
+            <div class="build-choice-content">
+              <img
+                class="ability-icon"
+                src={gadget.iconUrl}
+                alt=""
+                width="48"
+                height="48"
+                loading={eager ? "eager" : "lazy"}
+                decoding="async"
+                fetchpriority={eager ? "high" : "low"}
+              />
+              <span class="build-copy">{gadget.name}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
 
-    <div class="build-row">
-      <dt class="build-term">
-        <span>Star Power</span>
+    <section class="build-row" aria-label="Star power choices">
+      <div class="build-label">
+        <span class="build-term">Star Power</span>
         {
           brawler.alternativeStarPowerChoice && (
             <span class="build-note">Default + niche</span>
           )
         }
-      </dt>
-      <dd class="build-detail build-detail--stack">
-        <span class="build-choice build-choice--primary">
+      </div>
+      <div class="choice-list">
+        <div class="build-choice build-choice--primary">
           {
             brawler.alternativeStarPowerChoice && (
               <span class="choice-label">Safe Default</span>
             )
           }
-          <span class="build-choice-content">
+          <div class="build-choice-content">
             <img
+              class="ability-icon"
               src={brawler.bestStarPowerIconUrl}
-              alt={`${brawler.bestStarPowerName} icon`}
+              alt=""
               width="48"
               height="48"
-              loading="lazy"
+              loading={eager ? "eager" : "lazy"}
               decoding="async"
-              fetchpriority="low"
+              fetchpriority={eager ? "high" : "low"}
             />
             <span class="build-copy">{brawler.bestStarPowerName}</span>
-          </span>
-        </span>
+          </div>
+        </div>
         {
           brawler.alternativeStarPowerChoice && (
-            <span class="build-choice build-choice--secondary">
+            <div class="build-choice">
               <span class="choice-label">Niche Pick</span>
-              <span class="build-choice-content">
+              <div class="build-choice-content">
                 <img
+                  class="ability-icon"
                   src={brawler.alternativeStarPowerChoice.iconUrl}
-                  alt={`${brawler.alternativeStarPowerChoice.name} icon`}
+                  alt=""
                   width="48"
                   height="48"
                   loading="lazy"
                   decoding="async"
                   fetchpriority="low"
                 />
-                <span class="build-copy">{brawler.alternativeStarPowerChoice.name}</span>
-              </span>
-            </span>
+                <span class="build-copy">
+                  {brawler.alternativeStarPowerChoice.name}
+                </span>
+              </div>
+            </div>
           )
         }
-      </dd>
-    </div>
+      </div>
+    </section>
 
-    <div class="build-row">
-      <dt class="build-term">
-        <span>Gears</span>
-      </dt>
-      <dd class="build-detail build-detail--stack">
-        <div class="gear-group">
+    <section class="build-row" aria-label="Gear choices">
+      <div class="build-label">
+        <span class="build-term">Gears</span>
+      </div>
+      <div class="choice-list">
+        <div class="build-choice">
           <span class="choice-label">Safe Default</span>
-          <div class="build-detail gear-list">
+          <div class="gear-list">
             {
               brawler.bestGearChoices.map((gear) => (
-                <span class="gear-chip" tabindex="0" aria-label={gear.name}>
-                  <Image
+                <span class="gear-chip" title={gear.name} aria-label={gear.name}>
+                  <img
                     class="gear-icon"
-                    src={gear.image}
-                    alt={`${gear.name} gear icon`}
-                    layout="constrained"
+                    src={gear.image.src}
+                    alt=""
+                    width={gear.image.width}
+                    height={gear.image.height}
                     loading="lazy"
+                    decoding="async"
                   />
-                  <span class="gear-tooltip" aria-hidden="true">
-                    {gear.name}
-                  </span>
                 </span>
               ))
             }
@@ -176,32 +162,31 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
         </div>
         {
           brawler.alternativeGearChoices.length > 0 && (
-            <div class="gear-group gear-group--secondary">
+            <div class="build-choice">
               <span class="choice-label">Niche Swaps</span>
-              <div class="build-detail gear-list">
+              <div class="gear-list">
                 {brawler.alternativeGearChoices.map((gear) => (
                   <span
                     class="gear-chip gear-chip--secondary"
-                    tabindex="0"
+                    title={gear.name}
                     aria-label={gear.name}
                   >
-                    <Image
+                    <img
                       class="gear-icon"
-                      src={gear.image}
-                      alt={`${gear.name} gear icon`}
-                      layout="constrained"
+                      src={gear.image.src}
+                      alt=""
+                      width={gear.image.width}
+                      height={gear.image.height}
                       loading="lazy"
+                      decoding="async"
                     />
-                    <span class="gear-tooltip" aria-hidden="true">
-                      {gear.name}
-                    </span>
                   </span>
                 ))}
               </div>
             </div>
           )
         }
-      </dd>
-    </div>
-  </dl>
+      </div>
+    </section>
+  </div>
 </article>

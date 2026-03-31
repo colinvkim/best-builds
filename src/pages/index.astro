@@ -1,17 +1,7 @@
 ---
-import "../styles/global.css";
-import { Font } from "astro:assets";
-import {
-  NativeSelect,
-  NativeSelectOption,
-} from "@/components/ui/native-select";
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "@/components/ui/input-group";
-import { Kbd } from "@/components/ui/kbd";
-import { Search } from "lucide-react";
+export const prerender = true;
+
+import "../styles/site.css";
 import BrawlerCard from "../components/BrawlerCard.astro";
 import rawBrawlers from "../data/brawlers.json";
 import { normalizeBrawlers, RARITY_ORDER } from "../lib/brawlers";
@@ -42,8 +32,12 @@ for (const brawler of brawlers) {
       name="description"
       content="Fast, searchable Brawl Stars best builds powered by a local JSON file and Brawlify CDN icons."
     />
+    <meta name="theme-color" content="#f4f7fb" />
+    <meta name="color-scheme" content="light" />
     <link rel="preconnect" href="https://cdn.brawlify.com" crossorigin />
-    <Font cssVariable="--font-inter" />
+    <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.brawlify.com" />
+    <link rel="dns-prefetch" href="https://raw.githubusercontent.com" />
     <Analytics />
   </head>
 
@@ -62,9 +56,7 @@ for (const brawler of brawlers) {
           </p>
           <p class="hero-note">
             Updating builds now has a faster workflow. Use the
-            <a href="/dashboard" class="font-bold underline underline-offset-4">
-              dashboard editor
-            </a>
+            <a href="/dashboard" class="hero-note-link">dashboard editor</a>
             to pick gadgets, star powers, and gears, then export
             <code>brawlers.json</code>.
           </p>
@@ -75,44 +67,86 @@ for (const brawler of brawlers) {
         <div class="toolbar-controls">
           <div class="field">
             <label for="search" class="field-label">Search brawler</label>
-            <InputGroup>
-              <InputGroupInput
+            <div class="field-control-wrap">
+              <input
                 id="search"
+                class="field-control search-input"
                 type="search"
+                inputmode="search"
+                enterkeyhint="search"
+                autocomplete="off"
+                spellcheck="false"
                 placeholder="Search..."
               />
-              <InputGroupAddon><Search /></InputGroupAddon>
-              <InputGroupAddon align="inline-end">
-                <Kbd data-shortcut-hint hidden />
-              </InputGroupAddon>
-            </InputGroup>
+              <svg
+                class="search-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="11" cy="11" r="7"></circle>
+                <path d="m20 20-3.5-3.5"></path>
+              </svg>
+              <span class="shortcut-hint" data-shortcut-hint hidden></span>
+            </div>
           </div>
 
           <div class="field">
             <label for="rarity-filter" class="field-label">Rarity</label>
-            <NativeSelect id="rarity-filter">
-              <NativeSelectOption value="all">All rarities</NativeSelectOption>
-              {
-                RARITY_ORDER.map((rarity) => (
-                  <NativeSelectOption value={rarity}>
-                    {rarity}
-                    {rarityCount.has(rarity)
-                      ? ` (${rarityCount.get(rarity)})`
-                      : ""}
-                  </NativeSelectOption>
-                ))
-              }
-            </NativeSelect>
+            <div class="field-control-wrap">
+              <select id="rarity-filter" class="field-control select-control">
+                <option value="all">All rarities</option>
+                {
+                  RARITY_ORDER.map((rarity) => (
+                    <option value={rarity}>
+                      {rarity}
+                      {rarityCount.has(rarity)
+                        ? ` (${rarityCount.get(rarity)})`
+                        : ""}
+                    </option>
+                  ))
+                }
+              </select>
+              <svg
+                class="select-caret"
+                viewBox="0 0 10 6"
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M1 1 5 5 9 1"></path>
+              </svg>
+            </div>
           </div>
 
           <div class="field">
             <label for="sort-order" class="field-label">Sort by</label>
-            <NativeSelect id="sort-order">
-              <NativeSelectOption value="rarity">Rarity</NativeSelectOption>
-              <NativeSelectOption value="name-asc">Name A-Z</NativeSelectOption>
-              <NativeSelectOption value="name-desc">Name Z-A</NativeSelectOption
+            <div class="field-control-wrap">
+              <select id="sort-order" class="field-control select-control">
+                <option value="rarity">Rarity</option>
+                <option value="name-asc">Name A-Z</option>
+                <option value="name-desc">Name Z-A</option>
+              </select>
+              <svg
+                class="select-caret"
+                viewBox="0 0 10 6"
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               >
-            </NativeSelect>
+                <path d="M1 1 5 5 9 1"></path>
+              </svg>
+            </div>
           </div>
         </div>
 
@@ -131,7 +165,11 @@ for (const brawler of brawlers) {
         </div>
 
         <div class="brawler-grid" data-grid>
-          {brawlers.map((brawler) => <BrawlerCard brawler={brawler} />)}
+          {
+            brawlers.map((brawler, index) => (
+              <BrawlerCard brawler={brawler} eager={index < 4} />
+            ))
+          }
         </div>
       </section>
     </main>
@@ -182,55 +220,30 @@ for (const brawler of brawlers) {
         count instanceof HTMLElement &&
         emptyState instanceof HTMLElement
       ) {
-        const cards = Array.from(grid.querySelectorAll("[data-card]")).filter(
-          (card) => card instanceof HTMLElement,
+        const cards = Array.from(grid.children).filter((card) =>
+          card instanceof HTMLElement
         );
         const total = cards.length;
+        const collator = new Intl.Collator(undefined, {
+          sensitivity: "base",
+        });
 
-        const sortCards = () => {
-          const sortMode = sortSelect.value;
-          const sorted = [...cards].sort((left, right) => {
-            const leftName = left.getAttribute("data-name") ?? "";
-            const rightName = right.getAttribute("data-name") ?? "";
+        const readCardData = (card: HTMLElement) => ({
+          name: card.dataset.name ?? "",
+          rarity: card.dataset.rarity ?? "",
+          rarityRank: Number(card.dataset.rarityRank ?? "0"),
+        });
 
-            if (sortMode === "name-asc") {
-              return leftName.localeCompare(rightName);
-            }
-
-            if (sortMode === "name-desc") {
-              return rightName.localeCompare(leftName);
-            }
-
-            const leftRank = Number(
-              left.getAttribute("data-rarity-rank") ?? "0",
-            );
-            const rightRank = Number(
-              right.getAttribute("data-rarity-rank") ?? "0",
-            );
-
-            if (leftRank !== rightRank) {
-              return leftRank - rightRank;
-            }
-
-            return leftName.localeCompare(rightName);
-          });
-
-          for (const card of sorted) {
-            grid.append(card);
-          }
-        };
-
-        const filterCards = () => {
+        const applyFilters = () => {
           const query = searchInput.value.trim().toLowerCase();
           const selectedRarity = raritySelect.value;
           let visible = 0;
 
           for (const card of cards) {
-            const name = card.getAttribute("data-name") ?? "";
-            const rarity = card.getAttribute("data-rarity") ?? "";
-            const matchesQuery = query.length === 0 || name.includes(query);
+            const data = readCardData(card);
+            const matchesQuery = query.length === 0 || data.name.includes(query);
             const matchesRarity =
-              selectedRarity === "all" || rarity === selectedRarity;
+              selectedRarity === "all" || data.rarity === selectedRarity;
             const isVisible = matchesQuery && matchesRarity;
 
             card.hidden = !isVisible;
@@ -244,16 +257,40 @@ for (const brawler of brawlers) {
           emptyState.hidden = visible !== 0;
         };
 
-        const syncView = () => {
-          sortCards();
-          filterCards();
+        const sortCards = () => {
+          const sortMode = sortSelect.value;
+          const sorted = [...cards].sort((left, right) => {
+            const leftData = readCardData(left);
+            const rightData = readCardData(right);
+
+            if (sortMode === "name-asc") {
+              return collator.compare(leftData.name, rightData.name);
+            }
+
+            if (sortMode === "name-desc") {
+              return collator.compare(rightData.name, leftData.name);
+            }
+
+            if (leftData.rarityRank !== rightData.rarityRank) {
+              return leftData.rarityRank - rightData.rarityRank;
+            }
+
+            return collator.compare(leftData.name, rightData.name);
+          });
+
+          for (const card of sorted) {
+            grid.append(card);
+          }
         };
 
-        searchInput.addEventListener("input", filterCards);
-        raritySelect.addEventListener("change", filterCards);
-        sortSelect.addEventListener("change", syncView);
+        searchInput.addEventListener("input", applyFilters, { passive: true });
+        raritySelect.addEventListener("change", applyFilters);
+        sortSelect.addEventListener("change", () => {
+          sortCards();
+          applyFilters();
+        });
 
-        syncView();
+        applyFilters();
       }
 
       window.addEventListener("keydown", (event) => {
