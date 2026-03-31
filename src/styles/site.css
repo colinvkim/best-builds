@@ -168,9 +168,9 @@ select {
   top: 0;
   z-index: 10;
   display: grid;
-  gap: 14px;
+  gap: 16px;
   margin-top: 20px;
-  padding: 18px;
+  padding: 20px;
   border: 1px solid var(--border-strong);
   border-radius: 24px;
   background: rgba(241, 245, 249, 0.88);
@@ -179,8 +179,12 @@ select {
 
 .toolbar-controls {
   display: grid;
-  gap: 12px;
-  grid-template-columns: minmax(0, 1.4fr) repeat(2, minmax(180px, 0.72fr));
+  gap: 14px;
+  align-items: end;
+  grid-template-columns:
+    minmax(0, 2.2fr)
+    minmax(220px, 1fr)
+    minmax(220px, 1fr);
 }
 
 .field {
@@ -262,14 +266,27 @@ select {
 .toolbar-meta {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 12px;
 }
 
 .results-count {
   margin: 0;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
   color: var(--text-soft);
   font-weight: 700;
+}
+
+@media (max-width: 1100px) and (min-width: 768px) {
+  .toolbar-controls {
+    grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(200px, 1fr));
+  }
 }
 
 .cards-section {
@@ -460,6 +477,10 @@ select {
 }
 
 @media (max-width: 767px) {
+  .toolbar {
+    position: static;
+  }
+
   .page-shell {
     width: min(1180px, calc(100% - 24px));
     padding-top: 20px;
@@ -478,5 +499,13 @@ select {
 
   .toolbar-controls {
     grid-template-columns: 1fr;
+  }
+
+  .results-count {
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
   }
 }
