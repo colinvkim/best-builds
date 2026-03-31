@@ -45,11 +45,6 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
     <section class="build-row" aria-label="Gadget choices">
       <div class="build-label">
         <span class="build-term">Gadget</span>
-        {
-          brawler.gadgetChoices.length > 1 && (
-            <span class="build-note">Default + niche</span>
-          )
-        }
       </div>
       <div class="choice-list">
         {
@@ -87,11 +82,6 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
     <section class="build-row" aria-label="Star power choices">
       <div class="build-label">
         <span class="build-term">Star Power</span>
-        {
-          brawler.alternativeStarPowerChoice && (
-            <span class="build-note">Default + niche</span>
-          )
-        }
       </div>
       <div class="choice-list">
         <div class="build-choice build-choice--primary">

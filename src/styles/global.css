@@ -50,6 +50,7 @@
 @layer base {
   :root {
     color-scheme: light;
+    --sticky-offset: calc(env(safe-area-inset-top, 0px) + 12px);
   }
 
   html {
@@ -130,7 +131,8 @@
   }
 
   .toolbar {
-    @apply sticky top-0 z-10 mt-5 grid gap-3.5 rounded-3xl border border-slate-300/90 bg-slate-100/90 p-4.5 backdrop-blur max-md:rounded-[20px];
+    @apply sticky z-10 mt-5 grid gap-3.5 rounded-3xl border border-slate-300/90 bg-slate-100/90 p-4.5 shadow-[0_16px_36px_rgba(15,23,42,0.08),0_2px_8px_rgba(15,23,42,0.04)] backdrop-blur max-md:rounded-[20px];
+    top: var(--sticky-offset);
   }
 
   .toolbar-controls {

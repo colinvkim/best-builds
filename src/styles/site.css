@@ -1,5 +1,6 @@
 :root {
   color-scheme: light;
+  --sticky-offset: calc(env(safe-area-inset-top, 0px) + 12px);
   --page-bg: #f4f7fb;
   --surface: rgba(255, 255, 255, 0.94);
   --surface-strong: #ffffff;
@@ -165,7 +166,7 @@ select {
 
 .toolbar {
   position: sticky;
-  top: 0;
+  top: var(--sticky-offset);
   z-index: 10;
   display: grid;
   gap: 16px;
@@ -175,6 +176,9 @@ select {
   border-radius: 24px;
   background: rgba(241, 245, 249, 0.88);
   backdrop-filter: blur(10px);
+  box-shadow:
+    0 16px 36px rgba(15, 23, 42, 0.08),
+    0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
 .toolbar-controls {
