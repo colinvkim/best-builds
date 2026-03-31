@@ -1,6 +1,7 @@
 ---
 export const prerender = true;
 
+import { Font } from "astro:assets";
 import "../styles/site.css";
 import BrawlerCard from "../components/BrawlerCard.astro";
 import rawBrawlers from "../data/brawlers.json";
@@ -27,6 +28,7 @@ for (const brawler of brawlers) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <Font cssVariable="--font-inter" />
     <title>Best Builds for Every Brawler</title>
     <meta
       name="description"
@@ -35,7 +37,11 @@ for (const brawler of brawlers) {
     <meta name="theme-color" content="#f4f7fb" />
     <meta name="color-scheme" content="light" />
     <link rel="preconnect" href="https://cdn.brawlify.com" crossorigin />
-    <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin />
+    <link
+      rel="preconnect"
+      href="https://raw.githubusercontent.com"
+      crossorigin
+    />
     <link rel="dns-prefetch" href="https://cdn.brawlify.com" />
     <link rel="dns-prefetch" href="https://raw.githubusercontent.com" />
     <Analytics />
@@ -53,12 +59,6 @@ for (const brawler of brawlers) {
             Quickly discover the best builds of brawlers. The UI stays simple on
             purpose: fast search, predictable sorting, no animation, and
             image-heavy cards built for quick scanning.
-          </p>
-          <p class="hero-note">
-            Updating builds now has a faster workflow. Use the
-            <a href="/dashboard" class="hero-note-link">dashboard editor</a>
-            to pick gadgets, star powers, and gears, then export
-            <code>brawlers.json</code>.
           </p>
         </div>
       </section>
@@ -220,8 +220,8 @@ for (const brawler of brawlers) {
         count instanceof HTMLElement &&
         emptyState instanceof HTMLElement
       ) {
-        const cards = Array.from(grid.children).filter((card) =>
-          card instanceof HTMLElement
+        const cards = Array.from(grid.children).filter(
+          (card) => card instanceof HTMLElement,
         );
         const total = cards.length;
         const collator = new Intl.Collator(undefined, {
@@ -241,7 +241,8 @@ for (const brawler of brawlers) {
 
           for (const card of cards) {
             const data = readCardData(card);
-            const matchesQuery = query.length === 0 || data.name.includes(query);
+            const matchesQuery =
+              query.length === 0 || data.name.includes(query);
             const matchesRarity =
               selectedRarity === "all" || data.rarity === selectedRarity;
             const isVisible = matchesQuery && matchesRarity;

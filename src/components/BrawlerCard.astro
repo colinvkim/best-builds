@@ -52,31 +52,35 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
         }
       </div>
       <div class="choice-list">
-        {brawler.gadgetChoices.map((gadget, index) => (
-          <div class:list={[
-            "build-choice",
-            index === 0 ? "build-choice--primary" : null,
-          ]}>
-            {brawler.gadgetChoices.length > 1 && (
-              <span class="choice-label">
-                {index === 0 ? "Safe Default" : "Niche Pick"}
-              </span>
-            )}
-            <div class="build-choice-content">
-              <img
-                class="ability-icon"
-                src={gadget.iconUrl}
-                alt=""
-                width="48"
-                height="48"
-                loading={eager ? "eager" : "lazy"}
-                decoding="async"
-                fetchpriority={eager ? "high" : "low"}
-              />
-              <span class="build-copy">{gadget.name}</span>
+        {
+          brawler.gadgetChoices.map((gadget, index) => (
+            <div
+              class:list={[
+                "build-choice",
+                index === 0 ? "build-choice--primary" : null,
+              ]}
+            >
+              {brawler.gadgetChoices.length > 1 && (
+                <span class="choice-label">
+                  {index === 0 ? "Safe Default" : "Niche Pick"}
+                </span>
+              )}
+              <div class="build-choice-content">
+                <img
+                  class="ability-icon"
+                  src={gadget.iconUrl}
+                  alt=""
+                  width="48"
+                  height="48"
+                  loading={eager ? "eager" : "lazy"}
+                  decoding="async"
+                  fetchpriority={eager ? "high" : "low"}
+                />
+                <span class="build-copy">{gadget.name}</span>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </section>
 
@@ -145,7 +149,11 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
           <div class="gear-list">
             {
               brawler.bestGearChoices.map((gear) => (
-                <span class="gear-chip" title={gear.name} aria-label={gear.name}>
+                <span
+                  class="gear-chip"
+                  title={gear.name}
+                  aria-label={gear.name}
+                >
                   <img
                     class="gear-icon"
                     src={gear.image.src}
@@ -163,7 +171,7 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
         {
           brawler.alternativeGearChoices.length > 0 && (
             <div class="build-choice">
-              <span class="choice-label">Niche Swaps</span>
+              <span class="choice-label">Useful Swaps</span>
               <div class="gear-list">
                 {brawler.alternativeGearChoices.map((gear) => (
                   <span
