@@ -14,10 +14,8 @@ import { Kbd } from "@/components/ui/kbd";
 import { Search } from "lucide-react";
 import BrawlerCard from "../components/BrawlerCard.astro";
 import rawBrawlers from "../data/brawlers.json";
-import {
-  normalizeBrawlers,
-  RARITY_ORDER,
-} from "../lib/brawlers";
+import { normalizeBrawlers, RARITY_ORDER } from "../lib/brawlers";
+import Analytics from "@vercel/analytics/astro";
 
 const brawlers = normalizeBrawlers(rawBrawlers).sort((left, right) => {
   if (left.rarityRank !== right.rarityRank) {
@@ -46,6 +44,7 @@ for (const brawler of brawlers) {
     />
     <link rel="preconnect" href="https://cdn.brawlify.com" crossorigin />
     <Font cssVariable="--font-inter" />
+    <Analytics />
   </head>
 
   <body>
