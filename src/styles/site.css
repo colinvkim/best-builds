@@ -449,9 +449,13 @@ select {
 }
 
 .build-copy {
+  display: block;
+  flex: 1 1 auto;
+  min-width: 0;
   font-weight: 700;
   line-height: 1.18;
-  text-wrap: balance;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
 }
 
 .gear-chip {

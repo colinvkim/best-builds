@@ -71,7 +71,7 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
                   decoding="async"
                   fetchpriority={eager ? "high" : "low"}
                 />
-                <span class="build-copy">{gadget.name}</span>
+                <span class="build-copy" title={gadget.name}>{gadget.name}</span>
               </div>
             </div>
           ))
@@ -101,7 +101,12 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
               decoding="async"
               fetchpriority={eager ? "high" : "low"}
             />
-            <span class="build-copy">{brawler.bestStarPowerName}</span>
+            <span
+              class="build-copy"
+              title={brawler.bestStarPowerName}
+            >
+              {brawler.bestStarPowerName}
+            </span>
           </div>
         </div>
         {
@@ -119,7 +124,10 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
                   decoding="async"
                   fetchpriority="low"
                 />
-                <span class="build-copy">
+                <span
+                  class="build-copy"
+                  title={brawler.alternativeStarPowerChoice.name}
+                >
                   {brawler.alternativeStarPowerChoice.name}
                 </span>
               </div>
