@@ -218,11 +218,31 @@
   }
 
   .build-term {
-    @apply text-[0.88rem] font-bold text-slate-500;
+    @apply grid gap-1 text-[0.88rem] font-bold text-slate-500;
   }
 
   .build-detail {
     @apply m-0 flex min-w-0 items-center gap-3;
+  }
+
+  .build-note {
+    @apply text-[0.72rem] font-extrabold uppercase tracking-[0.08em] text-slate-400;
+  }
+
+  .build-choice-list {
+    @apply flex-wrap items-center gap-2;
+  }
+
+  .build-choice {
+    @apply flex min-w-0 items-center gap-3;
+  }
+
+  .build-choice--multi {
+    @apply rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2;
+  }
+
+  .build-divider {
+    @apply text-[0.74rem] font-extrabold uppercase tracking-[0.08em] text-slate-400;
   }
 
   .build-copy {

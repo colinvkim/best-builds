@@ -3,6 +3,8 @@
     "brawlerName": "Shelly",
     "bestGadgetName": "Fast Forward",
     "bestGadgetIcon": "23000255",
+    "alternativeGadgetName": "Clay Pigeons",
+    "alternativeGadgetIcon": "23000256",
     "bestStarPowerName": "Shell Shock",
     "bestStarPowerIcon": "23000076",
     "best2Gears": ["Damage", "Shield"],

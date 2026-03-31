@@ -2,12 +2,14 @@
   {
     "brawlerName": "Shelly",
     "bestGadgetName": "Fast Forward",
-    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000255.png",
+    "bestGadgetIcon": "23000255",
+    "alternativeGadgetName": "Clay Pigeons",
+    "alternativeGadgetIcon": "23000256",
     "bestStarPowerName": "Shell Shock",
-    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000076.png",
+    "bestStarPowerIcon": "23000076",
     "best2Gears": ["Damage", "Shield"],
     "best2GearsIcon": ["damage", "shield"],
-    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000000.png",
+    "brawlerIcon": "16000000",
     "rarity": "Starting Brawler"
   },
   {

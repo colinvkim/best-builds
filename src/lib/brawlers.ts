@@ -18,6 +18,8 @@ export type RawBrawler = {
   brawlerName: string;
   bestGadgetName: string;
   bestGadgetIcon: IconInput;
+  alternativeGadgetName?: string;
+  alternativeGadgetIcon?: IconInput;
   bestStarPowerName: string;
   bestStarPowerIcon: IconInput;
   best2Gears: [string, string];
@@ -26,8 +28,15 @@ export type RawBrawler = {
   rarity: Rarity;
 };
 
+export type GadgetChoice = {
+  name: string;
+  iconUrl: string;
+};
+
 export type Brawler = RawBrawler & {
   bestGadgetIconUrl: string;
+  alternativeGadgetIconUrl?: string;
+  gadgetChoices: GadgetChoice[];
   bestStarPowerIconUrl: string;
   best2GearsImage: [ImageMetadata, ImageMetadata];
   brawlerIconUrl: string;
@@ -135,6 +144,19 @@ export const normalizeBrawlers = (data: unknown): Brawler[] => {
       throw new Error(`Brawler entry "${candidate.brawlerName ?? index}" is missing a required field.`);
     }
 
+    const hasAlternativeGadgetFields =
+      candidate.alternativeGadgetName !== undefined || candidate.alternativeGadgetIcon !== undefined;
+
+    if (
+      hasAlternativeGadgetFields &&
+      (!isNonEmptyString(candidate.alternativeGadgetName) ||
+        !isNonEmptyString(candidate.alternativeGadgetIcon))
+    ) {
+      throw new Error(
+        `Brawler entry "${candidate.brawlerName}" must include both alternative gadget fields when one is present.`
+      );
+    }
+
     if (
       !Array.isArray(candidate.best2Gears) ||
       candidate.best2Gears.length !== 2 ||
@@ -154,6 +176,8 @@ export const normalizeBrawlers = (data: unknown): Brawler[] => {
     const brawlerName = candidate.brawlerName;
     const bestGadgetName = candidate.bestGadgetName;
     const bestGadgetIcon = candidate.bestGadgetIcon;
+    const alternativeGadgetName = candidate.alternativeGadgetName?.trim();
+    const alternativeGadgetIcon = candidate.alternativeGadgetIcon?.trim();
     const bestStarPowerName = candidate.bestStarPowerName;
     const bestStarPowerIcon = candidate.bestStarPowerIcon;
     const brawlerIcon = candidate.brawlerIcon;
@@ -164,18 +188,31 @@ export const normalizeBrawlers = (data: unknown): Brawler[] => {
       candidate.best2GearsIcon[1]
     ];
     const rarityRank = RARITY_ORDER.indexOf(rarity);
+    const bestGadgetIconUrl = normalizeIcon(bestGadgetIcon, "gadget");
+    const alternativeGadgetIconUrl = alternativeGadgetIcon
+      ? normalizeIcon(alternativeGadgetIcon, "gadget")
+      : undefined;
+    const gadgetChoices: GadgetChoice[] = [{ name: bestGadgetName, iconUrl: bestGadgetIconUrl }];
+
+    if (alternativeGadgetName && alternativeGadgetIconUrl) {
+      gadgetChoices.push({ name: alternativeGadgetName, iconUrl: alternativeGadgetIconUrl });
+    }
 
     return {
       brawlerName,
       bestGadgetName,
       bestGadgetIcon,
+      alternativeGadgetName,
+      alternativeGadgetIcon,
       bestStarPowerName,
       bestStarPowerIcon,
       best2Gears,
       best2GearsIcon,
       brawlerIcon,
       rarity,
-      bestGadgetIconUrl: normalizeIcon(bestGadgetIcon, "gadget"),
+      bestGadgetIconUrl,
+      alternativeGadgetIconUrl,
+      gadgetChoices,
       bestStarPowerIconUrl: normalizeIcon(bestStarPowerIcon, "star-power"),
       best2GearsImage: [
         resolveGearImage(best2GearsIcon[0], best2Gears[0]),

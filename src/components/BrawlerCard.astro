@@ -33,7 +33,6 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
     <div class="title-wrap">
       <p class="eyebrow">Best Build</p>
       <h2 class="card-title">{brawler.brawlerName}</h2>
-      </span>
       <Badge style={{ backgroundColor: rarityStyle.color, color: rarityStyle.textColor }}>
         {brawler.rarity}
       </Badge>
@@ -42,18 +41,38 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
 
   <dl class="build-list">
     <div class="build-row">
-      <dt class="build-term">Gadget</dt>
-      <dd class="build-detail">
-        <img
-          src={brawler.bestGadgetIconUrl}
-          alt={`${brawler.bestGadgetName} icon`}
-          width="48"
-          height="48"
-          loading="lazy"
-          decoding="async"
-          fetchpriority="low"
-        />
-        <span class="build-copy">{brawler.bestGadgetName}</span>
+      <dt class="build-term">
+        <span>{brawler.gadgetChoices.length > 1 ? "Gadgets" : "Gadget"}</span>
+        {
+          brawler.gadgetChoices.length > 1 && (
+            <span class="build-note">Both viable</span>
+          )
+        }
+      </dt>
+      <dd class:list={["build-detail", { "build-choice-list": brawler.gadgetChoices.length > 1 }]}>
+        {
+          brawler.gadgetChoices.map((gadget, index) => (
+            <>
+              <span class:list={["build-choice", { "build-choice--multi": brawler.gadgetChoices.length > 1 }]}>
+                <img
+                  src={gadget.iconUrl}
+                  alt={`${gadget.name} icon`}
+                  width="48"
+                  height="48"
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                />
+                <span class="build-copy">{gadget.name}</span>
+              </span>
+              {
+                index < brawler.gadgetChoices.length - 1 && (
+                  <span class="build-divider" aria-hidden="true">or</span>
+                )
+              }
+            </>
+          ))
+        }
       </dd>
     </div>
 
