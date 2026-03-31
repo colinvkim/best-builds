@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { Font } from "astro:assets";
+import Analytics from "@vercel/analytics/astro";
 import BuildDashboard from "../components/BuildDashboard";
 import rawBrawlers from "../data/brawlers.json";
 import { GEAR_OPTIONS, type RawBrawler } from "../lib/brawlers";
@@ -26,6 +27,7 @@ const currentBuilds = rawBrawlers as RawBrawler[];
     <link rel="preconnect" href="https://api.brawlify.com" crossorigin />
     <link rel="preconnect" href="https://cdn.brawlify.com" crossorigin />
     <Font cssVariable="--font-inter" />
+    <Analytics />
   </head>
 
   <body>

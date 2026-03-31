@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { Font } from "astro:assets";
+import Analytics from "@vercel/analytics/astro";
 import {
   NativeSelect,
   NativeSelectOption,
@@ -46,6 +47,7 @@ for (const brawler of brawlers) {
     />
     <link rel="preconnect" href="https://cdn.brawlify.com" crossorigin />
     <Font cssVariable="--font-inter" />
+    <Analytics />
   </head>
 
   <body>
