@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { RARITY_STYLES, type Brawler } from "../lib/brawlers";
-import { Badge } from "@/components/ui/badge"
+import { Badge } from "@/components/ui/badge";
 
 type Props = {
   brawler: Brawler;
@@ -33,7 +33,12 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
     <div class="title-wrap">
       <p class="eyebrow">Best Build</p>
       <h2 class="card-title">{brawler.brawlerName}</h2>
-      <Badge style={{ backgroundColor: rarityStyle.color, color: rarityStyle.textColor }}>
+      <Badge
+        style={{
+          backgroundColor: rarityStyle.color,
+          color: rarityStyle.textColor,
+        }}
+      >
         {brawler.rarity}
       </Badge>
     </div>
@@ -54,11 +59,9 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
           brawler.gadgetChoices.map((gadget, index) =>
             index === 0 ? (
               <span class="build-choice build-choice--primary">
-                {
-                  brawler.gadgetChoices.length > 1 && (
-                    <span class="choice-label">Safe Default</span>
-                  )
-                }
+                {brawler.gadgetChoices.length > 1 && (
+                  <span class="choice-label">Safe Default</span>
+                )}
                 <span class="build-choice-content">
                   <img
                     src={gadget.iconUrl}
@@ -88,7 +91,7 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
                   <span class="build-copy">{gadget.name}</span>
                 </span>
               </span>
-            )
+            ),
           )
         }
       </dd>
@@ -97,11 +100,6 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
     <div class="build-row">
       <dt class="build-term">
         <span>Star Power</span>
-        {
-          brawler.alternativeStarPowerChoices.length > 0 && (
-            <span class="build-note">Default + niche</span>
-          )
-        }
       </dt>
       <dd class="build-detail build-detail--stack">
         <span class="build-choice build-choice--primary">
@@ -148,15 +146,10 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
     <div class="build-row">
       <dt class="build-term">
         <span>Gears</span>
-        {
-          brawler.alternativeGearChoices.length > 0 && (
-            <span class="build-note">Default + flex</span>
-          )
-        }
       </dt>
       <dd class="build-detail build-detail--stack">
         <div class="gear-group">
-          <span class="choice-label">Default Pair</span>
+          <span class="choice-label">Safe Default</span>
           <div class="build-detail gear-list">
             {
               brawler.bestGearChoices.map((gear) => (
@@ -168,7 +161,9 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
                     layout="constrained"
                     loading="lazy"
                   />
-                  <span class="gear-tooltip" aria-hidden="true">{gear.name}</span>
+                  <span class="gear-tooltip" aria-hidden="true">
+                    {gear.name}
+                  </span>
                 </span>
               ))
             }
@@ -179,20 +174,24 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
             <div class="gear-group gear-group--secondary">
               <span class="choice-label">Niche Swaps</span>
               <div class="build-detail gear-list">
-                {
-                  brawler.alternativeGearChoices.map((gear) => (
-                    <span class="gear-chip gear-chip--secondary" tabindex="0" aria-label={gear.name}>
-                      <Image
-                        class="gear-icon"
-                        src={gear.image}
-                        alt={`${gear.name} gear icon`}
-                        layout="constrained"
-                        loading="lazy"
-                      />
-                      <span class="gear-tooltip" aria-hidden="true">{gear.name}</span>
+                {brawler.alternativeGearChoices.map((gear) => (
+                  <span
+                    class="gear-chip gear-chip--secondary"
+                    tabindex="0"
+                    aria-label={gear.name}
+                  >
+                    <Image
+                      class="gear-icon"
+                      src={gear.image}
+                      alt={`${gear.name} gear icon`}
+                      layout="constrained"
+                      loading="lazy"
+                    />
+                    <span class="gear-tooltip" aria-hidden="true">
+                      {gear.name}
                     </span>
-                  ))
-                }
+                  </span>
+                ))}
               </div>
             </div>
           )
