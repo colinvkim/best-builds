@@ -149,8 +149,8 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
               brawler.bestGearChoices.map((gear) => (
                 <span
                   class="gear-chip"
-                  title={gear.name}
                   aria-label={gear.name}
+                  tabindex="0"
                 >
                   <img
                     class="gear-icon"
@@ -174,8 +174,8 @@ const rarityStyle = RARITY_STYLES[brawler.rarity];
                 {brawler.alternativeGearChoices.map((gear) => (
                   <span
                     class="gear-chip gear-chip--secondary"
-                    title={gear.name}
                     aria-label={gear.name}
+                    tabindex="0"
                   >
                     <img
                       class="gear-icon"

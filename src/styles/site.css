@@ -459,6 +459,7 @@ select {
 }
 
 .gear-chip {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -468,10 +469,48 @@ select {
   border: 1px solid rgba(148, 163, 184, 0.2);
   border-radius: 12px;
   background: var(--surface-muted);
+  cursor: help;
 }
 
 .gear-chip--secondary {
   background: #fff;
+}
+
+.gear-chip::after {
+  content: attr(aria-label);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 10px);
+  z-index: 2;
+  padding: 0.45rem 0.65rem;
+  border-radius: 10px;
+  background: #0f172a;
+  color: #f8fafc;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.18);
+  transform: translate(-50%, 4px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 150ms ease,
+    transform 150ms ease,
+    visibility 150ms ease;
+}
+
+.gear-chip:hover::after,
+.gear-chip:focus-visible::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.gear-chip:focus-visible {
+  outline: 2px solid var(--safe-bg);
+  outline-offset: 3px;
 }
 
 .gear-icon {
