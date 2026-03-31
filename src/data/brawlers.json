@@ -48,16 +48,16 @@
     "bestGadgetIcon": "23000310",
     "bestStarPowerName": "Tough Guy",
     "bestStarPowerIcon": "23000137",
-    "best2Gears": ["Shield", "Health"],
-    "best2GearsIcon": ["shield", "health"],
+    "best2Gears": ["Damage", "Health"],
+    "best2GearsIcon": ["Damage", "health"],
     "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000002.png",
     "rarity": "Rare",
     "alternativeGadgetName": "T-Bone Missile",
     "alternativeGadgetIcon": "23000272",
     "alternativeGears": [
       {
-        "name": "Damage",
-        "icon": "damage"
+        "name": "Speed",
+        "icon": "speed"
       }
     ]
   },
