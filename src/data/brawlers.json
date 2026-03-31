@@ -7,19 +7,31 @@
     "alternativeGadgetIcon": "23000256",
     "bestStarPowerName": "Shell Shock",
     "bestStarPowerIcon": "23000076",
-    "best2Gears": ["Damage", "Shield"],
-    "best2GearsIcon": ["damage", "shield"],
+    "best2Gears": [
+      "Damage",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "shield"
+    ],
     "brawlerIcon": "16000000",
     "rarity": "Starting Brawler"
   },
   {
     "brawlerName": "Bull",
     "bestGadgetName": "Stomper",
-    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000272.png",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000310.png",
     "bestStarPowerName": "Tough Guy",
-    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000078.png",
-    "best2Gears": ["Damage", "Shield"],
-    "best2GearsIcon": ["damage", "shield"],
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000137.png",
+    "best2Gears": [
+      "Damage",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "shield"
+    ],
     "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000002.png",
     "rarity": "Rare"
   },
@@ -29,10 +41,73 @@
     "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000251.png",
     "bestStarPowerName": "Energize",
     "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000083.png",
-    "best2Gears": ["Damage", "Shield"],
-    "best2GearsIcon": ["damage", "shield"],
+    "best2Gears": [
+      "Damage",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "shield"
+    ],
     "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000007.png",
     "rarity": "Super Rare"
+  },
+  {
+    "brawlerName": "Angelo",
+    "bestGadgetName": "Master Fletcher",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000678.png",
+    "bestStarPowerName": "Empower",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000675.png",
+    "best2Gears": [
+      "Shield",
+      "Damage"
+    ],
+    "best2GearsIcon": [
+      "shield",
+      "damage"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000079.png",
+    "rarity": "Epic",
+    "alternativeGadgetName": "Stinging Flight",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000677.png"
+  },
+  {
+    "brawlerName": "Berry",
+    "bestGadgetName": "Friendship Is Great",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000766.png",
+    "bestStarPowerName": "Floor Is Fine",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000764.png",
+    "best2Gears": [
+      "Damage",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000082.png",
+    "rarity": "Epic",
+    "alternativeGadgetName": "Healthy Additives",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000767.png"
+  },
+  {
+    "brawlerName": "Meeple",
+    "bestGadgetName": "Mansions Of Meeple",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000877.png",
+    "bestStarPowerName": "Do Not Pass Go",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000875.png",
+    "best2Gears": [
+      "Damage",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000089.png",
+    "rarity": "Epic",
+    "alternativeGadgetName": "Ragequit",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000878.png"
   },
   {
     "brawlerName": "Piper",
@@ -40,20 +115,87 @@
     "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000268.png",
     "bestStarPowerName": "Ambush",
     "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000091.png",
-    "best2Gears": ["Damage", "Shield"],
-    "best2GearsIcon": ["damage", "shield"],
-    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000005.png",
+    "best2Gears": [
+      "Damage",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000015.png",
+    "rarity": "Epic"
+  },
+  {
+    "brawlerName": "Shade",
+    "bestGadgetName": "Longarms",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000834.png",
+    "bestStarPowerName": "Hardened Hoodie",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000833.png",
+    "best2Gears": [
+      "Damage",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000086.png",
+    "rarity": "Epic"
+  },
+  {
+    "brawlerName": "Trunk",
+    "bestGadgetName": "Worker Ants",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23001001.png",
+    "bestStarPowerName": "New Insect Overlords",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000998.png",
+    "best2Gears": [
+      "Damage",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000096.png",
     "rarity": "Epic"
   },
   {
     "brawlerName": "Mortis",
-    "bestGadgetName": "Combo Spinner",
-    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000265.png",
-    "bestStarPowerName": "Creepy Harvest",
-    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000087.png",
-    "best2Gears": ["Damage", "Shield"],
-    "best2GearsIcon": ["damage", "shield"],
+    "bestGadgetName": "Creature Of The Night",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000290.png",
+    "bestStarPowerName": "Coiled Snake",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000154.png",
+    "best2Gears": [
+      "Damage",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "damage",
+      "shield"
+    ],
     "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000011.png",
-    "rarity": "Mythic"
+    "rarity": "Mythic",
+    "alternativeGadgetName": "Combo Spinner",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000265.png"
+  },
+  {
+    "brawlerName": "Tara",
+    "bestGadgetName": "Support From Beyond",
+    "bestGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000356.png",
+    "bestStarPowerName": "Healing Shade",
+    "bestStarPowerIcon": "https://cdn.brawlify.com/star-powers/borderless/23000160.png",
+    "best2Gears": [
+      "Speed",
+      "Shield"
+    ],
+    "best2GearsIcon": [
+      "speed",
+      "shield"
+    ],
+    "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000017.png",
+    "rarity": "Mythic",
+    "alternativeGadgetName": "Psychic Enhancer",
+    "alternativeGadgetIcon": "https://cdn.brawlify.com/gadgets/borderless/23000266.png"
   }
 ]

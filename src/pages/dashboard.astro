@@ -1,0 +1,49 @@
+---
+import "../styles/global.css";
+import { Font } from "astro:assets";
+import BuildDashboard from "../components/BuildDashboard";
+import rawBrawlers from "../data/brawlers.json";
+import { GEAR_OPTIONS, type RawBrawler } from "../lib/brawlers";
+
+const gearOptions = GEAR_OPTIONS.map((gear) => ({
+  key: gear.key,
+  name: gear.name,
+  imageSrc: gear.image.src
+}));
+const currentBuilds = rawBrawlers as RawBrawler[];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Build Dashboard</title>
+    <meta
+      name="description"
+      content="Editor dashboard for selecting Brawl Stars gadgets, star powers, and gears, then exporting the local brawlers.json file."
+    />
+    <link rel="preconnect" href="https://api.brawlify.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.brawlify.com" crossorigin />
+    <Font cssVariable="--font-inter" />
+  </head>
+
+  <body>
+    <main class="page-shell">
+      <div class="mb-4">
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-slate-400 hover:text-slate-950"
+        >
+          ← Back to builds
+        </a>
+      </div>
+
+      <BuildDashboard
+        client:load
+        currentBuilds={currentBuilds}
+        gearOptions={gearOptions}
+      />
+    </main>
+  </body>
+</html>

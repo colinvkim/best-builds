@@ -3,16 +3,12 @@ import "../styles/global.css";
 import { Font } from "astro:assets";
 import {
   NativeSelect,
-  NativeSelectOptGroup,
   NativeSelectOption,
 } from "@/components/ui/native-select";
 import {
   InputGroup,
   InputGroupAddon,
-  InputGroupButton,
   InputGroupInput,
-  InputGroupText,
-  InputGroupTextarea,
 } from "@/components/ui/input-group";
 import { Kbd } from "@/components/ui/kbd";
 import { Search } from "lucide-react";
@@ -21,7 +17,6 @@ import rawBrawlers from "../data/brawlers.json";
 import {
   normalizeBrawlers,
   RARITY_ORDER,
-  RARITY_STYLES,
 } from "../lib/brawlers";
 
 const brawlers = normalizeBrawlers(rawBrawlers).sort((left, right) => {
@@ -65,6 +60,14 @@ for (const brawler of brawlers) {
             Quickly discover the best builds of brawlers. The UI stays simple on
             purpose: fast search, predictable sorting, no animation, and
             image-heavy cards built for quick scanning.
+          </p>
+          <p class="hero-note">
+            Updating builds now has a faster workflow. Use the
+            <a href="/dashboard" class="font-bold underline underline-offset-4">
+              dashboard editor
+            </a>
+            to pick gadgets, star powers, and gears, then export
+            <code>brawlers.json</code>.
           </p>
         </div>
       </section>

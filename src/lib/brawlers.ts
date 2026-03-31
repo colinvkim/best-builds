@@ -69,6 +69,81 @@ const gearImages = new Map<string, ImageMetadata>(
   })
 );
 
+const GEAR_ORDER = [
+  "damage",
+  "shield",
+  "speed",
+  "health",
+  "reload",
+  "vision",
+  "gadget",
+  "super",
+  "pet",
+  "amber",
+  "crow",
+  "eve",
+  "gene",
+  "leon",
+  "mortis",
+  "pam",
+  "sandy",
+  "spike",
+  "tick"
+] as const;
+
+const GEAR_LABELS: Record<string, string> = {
+  damage: "Damage",
+  shield: "Shield",
+  speed: "Speed",
+  health: "Health",
+  reload: "Reload",
+  vision: "Vision",
+  gadget: "Gadget Charge",
+  super: "Super Charge",
+  pet: "Pet Power",
+  amber: "Amber",
+  crow: "Crow",
+  eve: "Eve",
+  gene: "Gene",
+  leon: "Leon",
+  mortis: "Mortis",
+  pam: "Pam",
+  sandy: "Sandy",
+  spike: "Spike",
+  tick: "Tick"
+};
+
+export type GearOption = {
+  key: string;
+  name: string;
+  image: ImageMetadata;
+};
+
+export const GEAR_OPTIONS: GearOption[] = Array.from(gearImages.entries())
+  .sort(([leftKey], [rightKey]) => {
+    const leftIndex = GEAR_ORDER.indexOf(leftKey as (typeof GEAR_ORDER)[number]);
+    const rightIndex = GEAR_ORDER.indexOf(rightKey as (typeof GEAR_ORDER)[number]);
+
+    if (leftIndex !== -1 || rightIndex !== -1) {
+      if (leftIndex === -1) {
+        return 1;
+      }
+
+      if (rightIndex === -1) {
+        return -1;
+      }
+
+      return leftIndex - rightIndex;
+    }
+
+    return leftKey.localeCompare(rightKey);
+  })
+  .map(([key, image]) => ({
+    key,
+    name: GEAR_LABELS[key] ?? key,
+    image
+  }));
+
 export const RARITY_STYLES: Record<Rarity, { color: string; textColor: string }> = {
   "Starting Brawler": { color: "#f0f9ff", textColor: "#0369a1" },
   Rare: { color: "#f0fdf4", textColor: "#15803d" },
