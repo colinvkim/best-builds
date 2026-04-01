@@ -161,16 +161,16 @@
   },
   {
     "brawlerName": "Carl",
-    "bestGadgetName": "Heat Ejector",
-    "bestGadgetIcon": "23000262",
+    "bestGadgetName": "Flying Hook",
+    "bestGadgetIcon": "23000317",
     "bestStarPowerName": "Protective Pirouette",
     "bestStarPowerIcon": "23000145",
     "best2Gears": ["Shield", "Damage"],
     "best2GearsIcon": ["shield", "damage"],
     "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000025.png",
     "rarity": "Super Rare",
-    "alternativeGadgetName": "Flying Hook",
-    "alternativeGadgetIcon": "23000317",
+    "alternativeGadgetName": "Heat Ejector",
+    "alternativeGadgetIcon": "23000262",
     "alternativeGears": [
       {
         "name": "Health",
@@ -189,7 +189,13 @@
     "brawlerIcon": "https://cdn.brawlify.com/brawlers/borders/16000018.png",
     "rarity": "Super Rare",
     "alternativeGadgetName": "Tar Barrel",
-    "alternativeGadgetIcon": "23000313"
+    "alternativeGadgetIcon": "23000313",
+    "alternativeGears": [
+      {
+        "name": "Health",
+        "icon": "health"
+      }
+    ]
   },
   {
     "brawlerName": "Dynamike",
