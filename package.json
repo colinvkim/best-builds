@@ -12,20 +12,20 @@
     "normalize:icon-ids": "node scripts/normalize-brawler-icon-ids.mjs"
   },
   "dependencies": {
-    "@astrojs/react": "^5.0.2",
-    "@astrojs/vercel": "^10.0.3",
-    "@base-ui/react": "^1.3.0",
+    "@astrojs/react": "^5.0.3",
+    "@astrojs/vercel": "^10.0.4",
+    "@base-ui/react": "^1.4.0",
     "@tailwindcss/vite": "^4.2.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vercel/analytics": "^2.0.1",
-    "astro": "^6.1.2",
+    "astro": "^6.1.6",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "lucide-react": "^1.7.0",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "shadcn": "^4.1.1",
+    "lucide-react": "^1.8.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "shadcn": "^4.2.0",
     "sharp": "^0.34.5",
     "tailwind-merge": "^3.5.0",
     "tailwindcss": "^4.2.2",
@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
-    "@types/node": "^25.5.0",
+    "@types/node": "^25.6.0",
     "typescript": "^5.9.3"
   }
 }
