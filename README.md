@@ -1,18 +1,67 @@
 # Best Builds
 
-Really fast website for viewing the best builds of Brawlers.
+A fast, minimal Astro site that shows the best gadget, star power, and gear setup for every Brawl Stars Brawler.
 
-## Commands
+![Astro](https://img.shields.io/badge/Astro-FF5D01?logo=astro&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-lightgrey)
+
+## Why?
+
+Brawl Stars has over 100 Brawlers, each with multiple gadgets, star powers, and gear options. Figuring out the best setup means carefully watching YouTube videos or scrolling through Discord servers. This website cuts through the noise with data sourced directly from pros.
+
+The data lives in a single JSON file so anyone can edit it without touching code.
+
+## Features
+
+### Brawler Loadouts
+
+- **Default setup** — best gadget, best star power, and top 2 gears for every brawler
+- **Niche alternatives** — optional backup gadget, star power, and gear swaps for specific matchups
+- **Asset ID system** — store Brawlify CDN IDs instead of full URLs; the app builds icon URLs at runtime
+
+### Data Entry
+
+- Single JSON file at `src/data/brawlers.json`
+- Add or edit a brawler in under a minute
+- Run `pnpm run normalize:icon-ids` to convert full URLs to asset IDs after bulk imports
+
+### Performance
+
+- **Static site** — built once, served as plain HTML/CSS/JS
+- **Zero JavaScript framework overhead** — Astro strips unused JS by default
+- **Optimized icons** — gear icons are local assets, optimized at build time
+
+## Requirements
+
+- **Node.js 20+**
+- **pnpm**
+
+## Installation
 
 ```bash
+git clone https://github.com/colinvkim/best-builds.git
+cd best-builds
 pnpm install
+```
+
+## Development
+
+Start the dev server:
+
+```bash
 pnpm dev
+```
+
+Build for production:
+
+```bash
 pnpm build
 ```
 
-## JSON format
+## JSON Format
 
-Each brawler entry must contain these fields:
+Each brawler entry requires these fields:
 
 ```json
 {
@@ -28,7 +77,7 @@ Each brawler entry must contain these fields:
 }
 ```
 
-If a brawler has a clear default plus niche alternatives, you can add these optional fields:
+Optional fields for niche alternatives:
 
 ```json
 {
@@ -42,40 +91,25 @@ If a brawler has a clear default plus niche alternatives, you can add these opti
 }
 ```
 
-When those fields are present, the site keeps the main gadget, star power, and 2-gear pair as the safe default, then shows the extra options as niche backups or swaps.
+Icon fields accept Brawlify asset IDs (e.g. `"23000255"`) — the app resolves them to full CDN URLs at runtime. Gear icons are local files in `src/assets/gears/`, so `best2GearsIcon` should match the filename without extension.
 
-## Recommended manual editing
+## Scripts
 
-Brawlify's own CDN README says the CDN is meant to be linked programmatically with asset IDs. Because of that, the best long-term workflow is to keep the same required fields, but store the Brawlify IDs in the `*Icon` fields whenever you can.
+| Command                       | Description                                         |
+| ----------------------------- | --------------------------------------------------- |
+| `pnpm dev`                    | Start Astro dev server                              |
+| `pnpm build`                  | Build static site for production                    |
+| `pnpm run normalize:icon-ids` | Convert full CDN URLs in brawlers.json to asset IDs |
 
-You can see that format here: [`src/data/brawlers.ids.example.json`](/Users/colin/Programming/best-builds/src/data/brawlers.ids.example.json)
+## Contributing
 
-If you want less typing, the site accepts raw Brawlify asset IDs in any icon field instead of full URLs.
+1. Fork the repo and create a feature branch
+2. Add or update brawler entries in `src/data/brawlers.json`
+3. Run `pnpm run normalize:icon-ids` if you pasted full URLs
+4. Open a pull request with the changes
 
-Examples:
+If a loadout feels wrong, link a source (YouTube, tournament VOD, etc.) so it can be verified.
 
-- `"bestGadgetIcon": "23000255"`
-- `"bestStarPowerIcon": "23000076"`
-- `"best2GearsIcon": ["damage", "shield"]`
-- `"brawlerIcon": "16000000"`
+## License
 
-Gear icons are now local assets in [`src/assets/gears`](/Users/colin/Programming/best-builds/src/assets/gears), so `best2GearsIcon` should match the local filename without the extension. Astro optimizes those images at build time.
-
-## CDN base URL
-
-The JSON only needs icon IDs. The app builds the full icon URL at runtime using the CDN base URL configured in:
-
-- [`src/lib/brawlers.ts`](/Users/colin/Programming/best-builds/src/lib/brawlers.ts)
-- `PUBLIC_BRAWLIFY_CDN_BASE_URL` in `.env`
-
-You can copy [`.env.example`](/Users/colin/Programming/best-builds/.env.example) to `.env` and change that one value if the CDN host ever changes.
-
-## Bulk conversion
-
-If you import data that still contains full gadget/star power URLs, run:
-
-```bash
-pnpm run normalize:icon-ids
-```
-
-That script rewrites `bestGadgetIcon`, `alternativeGadgetIcon`, `bestStarPowerIcon`, and `alternativeStarPower.icon` in [`src/data/brawlers.json`](/Users/colin/Programming/best-builds/src/data/brawlers.json) to just the asset ID. It also migrates legacy `alternativeStarPowers` arrays to a single `alternativeStarPower` object.
+MIT. See [LICENSE](LICENSE) for details.
