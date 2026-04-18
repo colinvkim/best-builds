@@ -65,7 +65,7 @@ export type Brawler = RawBrawler & {
 type IconKind = "brawler" | "gadget" | "star-power";
 
 const ICON_CDN_BASE_URL =
-  "https://raw.githubusercontent.com/colinvkim/CDN/refs/heads/master".replace(
+  (import.meta.env.PUBLIC_BRAWLIFY_CDN_BASE_URL ?? "https://cdn.brawlify.com").replace(
     /\/+$/,
     "",
   );
