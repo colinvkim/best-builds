@@ -64,11 +64,9 @@ export type Brawler = RawBrawler & {
 
 type IconKind = "brawler" | "gadget" | "star-power";
 
-const ICON_CDN_BASE_URL =
-  (import.meta.env.PUBLIC_BRAWLIFY_CDN_BASE_URL ?? "https://cdn.brawlify.com").replace(
-    /\/+$/,
-    "",
-  );
+const ICON_CDN_BASE_URL = (
+  import.meta.env.PUBLIC_BRAWLIFY_CDN_BASE_URL ?? "https://cdn.brawlify.com"
+).replace(/\/+$/, "");
 
 const CDN_PATHS: Record<IconKind, string> = {
   brawler: "/brawlers/borders/{id}.png",
