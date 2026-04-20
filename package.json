@@ -15,7 +15,7 @@
     "@astrojs/react": "^5.0.3",
     "@astrojs/vercel": "^10.0.4",
     "@base-ui/react": "^1.4.0",
-    "@tailwindcss/vite": "^4.2.2",
+    "@tailwindcss/vite": "^4.2.3",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vercel/analytics": "^2.0.1",
