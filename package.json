@@ -14,7 +14,7 @@
   "dependencies": {
     "@astrojs/react": "^5.0.3",
     "@astrojs/vercel": "^10.0.4",
-    "@base-ui/react": "^1.4.0",
+    "@base-ui/react": "^1.4.1",
     "@tailwindcss/vite": "^4.2.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
