@@ -10,22 +10,22 @@ importers:
     dependencies:
       '@astrojs/react':
         specifier: ^5.0.6
-        version: 5.0.6(@types/node@25.9.1)(@types/react-dom@19.2.3(@types/react@19.2.16))(@types/react@19.2.16)(jiti@2.7.0)(lightningcss@1.32.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(yaml@2.9.0)
+        version: 5.0.6(@types/node@25.9.1)(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(jiti@2.7.0)(lightningcss@1.32.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(yaml@2.9.0)
       '@astrojs/vercel':
         specifier: ^10.0.8
         version: 10.0.8(astro@6.4.2(@types/node@25.9.1)(@vercel/functions@3.6.1)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.61.0)(yaml@2.9.0))(react@19.2.7)(rollup@4.61.0)
       '@base-ui/react':
         specifier: ^1.5.0
-        version: 1.5.0(@date-fns/tz@1.4.1)(@types/react@19.2.16)(date-fns@4.1.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+        version: 1.5.0(@date-fns/tz@1.4.1)(@types/react@19.2.17)(date-fns@4.1.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@tailwindcss/vite':
         specifier: ^4.3.0
         version: 4.3.0(vite@7.3.5(@types/node@25.9.1)(jiti@2.7.0)(lightningcss@1.32.0)(yaml@2.9.0))
       '@types/react':
-        specifier: ^19.2.16
-        version: 19.2.16
+        specifier: ^19.2.17
+        version: 19.2.17
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.3(@types/react@19.2.16)
+        version: 19.2.3(@types/react@19.2.17)
       '@vercel/analytics':
         specifier: ^2.0.1
         version: 2.0.1(react@19.2.7)
@@ -1117,8 +1117,8 @@ packages:
     peerDependencies:
       '@types/react': ^19.2.0
 
-  '@types/react@19.2.16':
-    resolution: {integrity: sha512-esJiCAnl0kfpNdE69f3So4WJUXy95dLZydX0KwK46riIHDzHM7O9Vtf9xCHW0PXIqvgqNrswl522kA/5yx+F4w==}
+  '@types/react@19.2.17':
+    resolution: {integrity: sha512-MXfmqaVPEVgkBT/aY0aGCkRWWtByiYQXo3xdQ8r5RzuFrPiRn8Gar2tQdXSUQ2GKV3bkXckek89V8wQBY2Q/Aw==}
 
   '@types/set-cookie-parser@2.4.10':
     resolution: {integrity: sha512-GGmQVGpQWUe5qglJozEjZV/5dyxbOOZ0LHe/lqyWssB88Y4svNfst0uqBVscdDeIKl5Jy5+aPSvy7mI9tYRguw==}
@@ -3576,11 +3576,11 @@ snapshots:
     dependencies:
       prismjs: 1.30.0
 
-  '@astrojs/react@5.0.6(@types/node@25.9.1)(@types/react-dom@19.2.3(@types/react@19.2.16))(@types/react@19.2.16)(jiti@2.7.0)(lightningcss@1.32.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(yaml@2.9.0)':
+  '@astrojs/react@5.0.6(@types/node@25.9.1)(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(jiti@2.7.0)(lightningcss@1.32.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(yaml@2.9.0)':
     dependencies:
       '@astrojs/internal-helpers': 0.10.0
-      '@types/react': 19.2.16
-      '@types/react-dom': 19.2.3(@types/react@19.2.16)
+      '@types/react': 19.2.17
+      '@types/react-dom': 19.2.3(@types/react@19.2.17)
       '@vitejs/plugin-react': 5.2.0(vite@7.3.5(@types/node@25.9.1)(jiti@2.7.0)(lightningcss@1.32.0)(yaml@2.9.0))
       devalue: 5.8.1
       react: 19.2.7
@@ -3834,10 +3834,10 @@ snapshots:
       '@babel/helper-string-parser': 7.29.7
       '@babel/helper-validator-identifier': 7.29.7
 
-  '@base-ui/react@1.5.0(@date-fns/tz@1.4.1)(@types/react@19.2.16)(date-fns@4.1.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
+  '@base-ui/react@1.5.0(@date-fns/tz@1.4.1)(@types/react@19.2.17)(date-fns@4.1.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@babel/runtime': 7.29.7
-      '@base-ui/utils': 0.2.9(@types/react@19.2.16)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      '@base-ui/utils': 0.2.9(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@floating-ui/react-dom': 2.1.8(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@floating-ui/utils': 0.2.11
       react: 19.2.7
@@ -3845,10 +3845,10 @@ snapshots:
       use-sync-external-store: 1.6.0(react@19.2.7)
     optionalDependencies:
       '@date-fns/tz': 1.4.1
-      '@types/react': 19.2.16
+      '@types/react': 19.2.17
       date-fns: 4.1.0
 
-  '@base-ui/utils@0.2.9(@types/react@19.2.16)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
+  '@base-ui/utils@0.2.9(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@babel/runtime': 7.29.7
       '@floating-ui/utils': 0.2.11
@@ -3857,7 +3857,7 @@ snapshots:
       reselect: 5.2.0
       use-sync-external-store: 1.6.0(react@19.2.7)
     optionalDependencies:
-      '@types/react': 19.2.16
+      '@types/react': 19.2.17
 
   '@capsizecss/unpack@4.0.0':
     dependencies:
@@ -4494,11 +4494,11 @@ snapshots:
     dependencies:
       undici-types: 7.24.6
 
-  '@types/react-dom@19.2.3(@types/react@19.2.16)':
+  '@types/react-dom@19.2.3(@types/react@19.2.17)':
     dependencies:
-      '@types/react': 19.2.16
+      '@types/react': 19.2.17
 
-  '@types/react@19.2.16':
+  '@types/react@19.2.17':
     dependencies:
       csstype: 3.2.3
 
